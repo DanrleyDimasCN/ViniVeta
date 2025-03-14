@@ -1,0 +1,21 @@
+:root {
+  --font-nome-vinho: "Artifika", serif; 
+  --cor-principal:#7E0B36;
+  --cor-secundaria:#604080;
+  --cor-complementar: #FCFF00;
+  --cor-button: #7F00FF;
+  --button-tamanho: .5rem 3rem;
+  --box-maior: 10rem;
+  --box-media: 3rem;
+  --box-menor:.2rem;
+  --font-principal: 1.1rem;
+  --font-media: 1rem;
+  --font-secundaria: .8rem;
+  --font-peso: bolder;
+  --font-peso-medio: 700;
+  --font-peso-menor: 500;
+  --espacamento-maior: 2rem;
+  --espacamento-menor: 1rem;
+  --espacamento-pequeno: .5rem;
+  --borda-arredondamento: .6rem;
+}

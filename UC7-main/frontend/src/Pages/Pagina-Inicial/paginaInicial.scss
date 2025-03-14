@@ -1,0 +1,220 @@
+* {
+  .box-pagina-inicial {
+    background-color: var(--cor-principal);
+    color: #fff;
+    display: flex;
+
+    .box-logo-perfil {
+      width: 30vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--espacamento-menor);
+      font-size: 1.5rem;
+      font-weight: var(--font-peso-medio);
+      cursor: pointer;
+
+      img {
+        height: 3rem;
+      }
+
+      a {
+        text-decoration: none;
+        user-select: none;
+        outline: none;
+        box-shadow: none;
+        background: transparent;
+        color: inherit;
+        text-align: center;
+      }
+    }
+
+    .box-pesquisar-minhaLista {
+      width: 70vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .box-pesquisar {
+        height: 10vh;
+        width: 70vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 0.5px solid #fff;
+        font-size: var(--font-principal);
+        font-weight: var(--font-peso-medio);
+        border-bottom: 1px solid #fff;
+        cursor: pointer;
+
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none;
+          user-select: none;
+          outline: none;
+          box-shadow: none;
+          background: transparent;
+          color: inherit;
+          text-align: center;
+
+          img {
+            height: 1.5rem;
+          }
+
+          p {
+            margin-left: 1rem;
+          }
+        }
+      }
+
+      .box-minha-lista {
+        height: 10vh;
+        width: 70vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 0.5px solid #fff;
+        border-top: 0.5px solid #fff;
+        font-size: var(--font-principal);
+        font-weight: var(--font-peso-medio);
+        cursor: pointer;
+
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none;
+          user-select: none;
+          outline: none;
+          box-shadow: none;
+          background: transparent;
+          color: inherit;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .box-imagem-pagina-inicial {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    img {
+      height: 80vh;
+      width: 100vw;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  * .box-background .box-principal-login {
+    height: 95vh;
+  }
+
+  .box-background .box-principal-login .box-novo-cadastro {
+    height: 5rem;
+    width: 60vw;
+    font-size: 1.3rem;
+  }
+
+  .box-background
+    .box-principal-login
+    .box-dados-login
+    .box-button-entrar
+    button {
+    all: unset;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    background-color: var(--cor-button);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    padding: 1rem;
+    border-radius: var(--borda-arredondamento);
+  }
+
+  .box-background .box-principal-login .box-dados-login input {
+    all: unset;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bolder;
+    background-color: #fff;
+    border-radius: var(--borda-arredondamento);
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  * .box-screen-1024 {
+    display: flex;
+  }
+
+  * .box-pagina-inicial {
+    height: 100vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  * .box-pagina-inicial .box-logo-perfil {
+    height: 50vh;
+    width: 40vw;
+    border-bottom: 1px solid #fff;
+    font-size: 4rem;
+    gap: 2rem;
+    text-align: center;
+
+    img {
+      height: 20vh;
+      width: 15vw;
+    }
+  }
+
+  * .box-pagina-inicial .box-pesquisar-minhaLista {
+    height: 50vh;
+    width: 30vw;
+    display: flex;
+  }
+
+  * .box-pagina-inicial .box-pesquisar-minhaLista .box-pesquisar {
+    height: 40vh;
+    width: 40vw;
+    border: none;
+    font-size: 4rem;
+    border-bottom: 1px solid #fff;
+    gap: 1rem;
+
+    img {
+      height: 2.5rem;
+    }
+  }
+
+  * .box-pagina-inicial .box-pesquisar-minhaLista .box-minha-lista {
+    height: 40vh;
+    width: 40vw;
+    border: none;
+    font-size: 4rem;
+  }
+
+  * .box-imagem-pagina-inicial img {
+    height: 100vh;
+    width: 60vw;
+  }
+
+  .box-pagina-inicial .box-pesquisar-minhaLista .box-pesquisar a img {
+    height: 4rem;
+  }
+}

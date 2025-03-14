@@ -1,0 +1,79 @@
+* {
+    body {
+        
+        .box-editar {
+            height: 100vh;
+            background-color: var(--cor-principal);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .box-form {
+                background-color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50vh;
+                width: 70vw;
+                border-radius: var(--borda-arredondamento);
+
+                p {
+                    color: #000000be;
+                }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+    
+                    input {
+                        all: unset;
+                        border: none;
+                        outline: none;
+                        padding:  1rem 0;
+                        color: #000000;
+            
+                        border-bottom: 1px solid #000000c5;
+                        margin: 0rem var(--espacamento-pequeno);
+                        width: 60vw;
+                    }
+    
+                    button {
+                        all: unset;
+                        background: var(--cor-secundaria);
+                        border: none;
+                        padding: 0;
+                        font: inherit;
+                        color: inherit;
+                        cursor: pointer;
+                        
+                        height: 2.5rem;
+                        width: 10rem;
+                        text-align: center;
+                        color: #fff;
+                        font-size: 1.5rem;
+                        font-weight: var(--font-peso);
+                        border-radius: 0 5rem 5rem 0 ;
+                }
+            }
+            }
+
+       
+    }
+}
+}
+
+@media (min-width:600px) {
+    * body .box-editar .box-form {
+            height: 50vh;
+            width: 40vw;
+
+            form {
+                input {
+                width: 30vw;
+               }
+            }
+}
+}

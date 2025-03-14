@@ -1,0 +1,158 @@
+* {
+
+    .box-background {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--cor-principal);
+
+        
+            .box-principal-login { 
+                height: 90vh;
+                width: 90vw;
+                background-color: var(--cor-secundaria);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-radius: var(--borda-arredondamento);
+                gap: var(--espacamento-maior);
+
+    .box-dados-login {
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--espacamento-pequeno);
+        
+
+        .box-image {
+            img {
+                margin: 0 var(--espacamento-pequeno);
+            }
+        }
+
+        input {
+            all: unset;
+            border: none;
+            outline: none;
+            padding: 0;
+            margin: 0;
+
+            font-weight: var(--font-peso);
+            background-color: #fff;
+            border-radius: var(--borda-arredondamento);
+            padding: var(--box-menor);
+          }
+
+          .box-button-entrar {
+            button {
+                all: unset;
+                background: none;
+                border: none;
+                padding: 0;
+                font: inherit;
+                color: inherit;
+                cursor: pointer;
+                
+                background-color: var(--cor-button);
+                color: #fff;
+                font-size: var(--font-principal);
+                font-weight: var(--font-peso);
+                padding: var(--button-tamanho);
+                border-radius: var(--borda-arredondamento);
+              }
+          }
+
+          .box-recuperar-senha {
+            color: #fff;
+            font-size: var(--font-secundaria);
+            font-weight: var(--font-peso);
+          }
+    }
+
+    .box-novo-cadastro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: var(--font-secundaria);
+        font-weight: var(--font-peso);
+        background-color: var(--cor-complementar);
+        color: var(--cor-button);
+        width: 80vw;
+        height: var(--box-media);
+        border-radius: var(--borda-arredondamento);
+    
+    }
+}
+}
+
+}
+
+@media (min-width:600px) {
+
+    .box-background .box-principal-login {
+        height: 90vh;
+    }
+
+    .box-background .box-principal-login .box-dados-login {
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--espacamento-pequeno);
+    }
+
+    .box-background .box-principal-login .box-dados-login input {
+        all: unset;
+        border: none;
+        outline: none;
+        padding: 0;
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: bolder;
+        background-color: #fff;
+        border-radius: var(--borda-arredondamento);
+        padding: 1.5rem;
+    }
+
+    .box-background .box-principal-login .box-novo-cadastro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: var(--font-peso);
+        background-color: var(--cor-complementar);
+        color: var(--cor-button);
+        width: 60vw;
+        height: 5rem;
+        border-radius: var(--borda-arredondamento);
+    }
+
+    .box-background .box-principal-login .box-dados-login .box-button-entrar button {
+        all: unset;
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        color: inherit;
+        cursor: pointer;
+        background-color: var(--cor-button);
+        color: #fff;
+        font-size: 2rem;
+        font-weight: bolder;
+        padding: 1.5rem 5rem;
+        border-radius: var(--borda-arredondamento);
+    }
+
+    .box-recuperar-senha {
+        p {
+            font-size: 1.5rem;
+        }
+    }
+   
+}
