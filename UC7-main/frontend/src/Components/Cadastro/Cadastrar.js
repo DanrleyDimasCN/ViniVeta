@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import apiLocal from '../../services/api'
+import api from '../../services/api'
 import { toast } from "react-toastify"
 import logo from '../../image/Rectangle11.png'
 import back from '../../image/back.svg'
@@ -44,7 +44,7 @@ export default function Cadastrar() {
         console.log('Data formatada para envio:', dataFormatada);
 
 
-        await apiLocal.post('/CadastrarUsuarios', {
+        await api.post('/CadastrarUsuarios', {
             nome,
             sobrenome,
             email,

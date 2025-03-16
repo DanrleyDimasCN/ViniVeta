@@ -14,18 +14,12 @@ export default function Lista() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+
   useEffect(() => {
-    if (query.length < 3) {
-      setResults([]);
-      return;
-    }
-
-    const fetchData = async () => {
-      setLoading(true);
-      setError("");
-
+    async function consultarLista() {
+    
       try {
-        const response = await api.get("/data/vinhos.json");
+        const response = await api.get("/ConsultarLista");
 
         const filteredResults = response.data.filter(
           (vinho) =>
@@ -35,15 +29,16 @@ export default function Lista() {
         setResults(filteredResults);
       } catch (error) {
         setError("Nenhum vinho encontrado.");
-      } finally {
-        setLoading(false);
       }
-    };
+    }
+     consultarLista()
+  }, [query])
+  
+   
 
-    const timer = setTimeout(fetchData, 500);
-    return () => clearTimeout(timer);
-  }, [query]);
+ 
 
+  
   return (
     <div className="box-lista">
       <div className="box-lista-search">
@@ -76,7 +71,7 @@ export default function Lista() {
           <p>Vinicolá</p>
         </button>
       </div>
-
+        
       <div className="box-lista-resposta">
         {loading && <p>Carregando...</p>}
         {error && <p>{error}</p>}

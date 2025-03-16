@@ -6,6 +6,8 @@ class ListaControllers {
     async lista_vinhos(req: Request, res: Response) {
         const { IdUsuario, nome, tipo, nota, favorito } = req.body;
         const listaServices = new ListaServices()
+
+        
         const resposta = await listaServices.cadastro_vinhos({
             IdUsuario,
             nome,
