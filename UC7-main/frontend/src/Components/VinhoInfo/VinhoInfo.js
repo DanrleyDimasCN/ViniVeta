@@ -14,7 +14,7 @@ export default function VinhoInfo() {
   const { IdUsuario } = useContext(AutenticadoContexto);
 
   const { id } = useParams();
-  
+
   useEffect(() => {
     async function consultarVinho() {
       try {
@@ -42,9 +42,7 @@ export default function VinhoInfo() {
   }, [id]);
 
   async function addVinho() {
-    
     try {
-
       if (!IdUsuario) {
         toast.error("Usuário não Autenticado");
         return;
@@ -54,6 +52,9 @@ export default function VinhoInfo() {
         IdUsuario,
         nome: infoVinho.nome,
         tipo: infoVinho.tipo,
+        uva: infoVinho.uva,
+        pais: infoVinho.pais,
+        regiao: infoVinho.regiao,
         nota,
         favorito,
       });
@@ -64,8 +65,7 @@ export default function VinhoInfo() {
       setModalAberto(false);
     } catch (error) {
       console.log(error);
-      
-      
+
       toast.error("Erro ao adicionar o vinho á sua lista", {
         toastId: "ToastId",
       });

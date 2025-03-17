@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
+import axios from "axios";
 import search from "../../image/logo-search.png";
 import cordero_malbec from "../../image/cordero-malbec.png";
 import barril from "../../image/barril.png";
@@ -7,7 +8,7 @@ import uvas from "../../image/uvas.png";
 import pais_regiao from "../../image/pais-regiao.png";
 import star from "../../image/star.png";
 import infoadd_white from "../../image/infoadd_white.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function Lista() {
   const [query, setQuery] = useState("");
@@ -61,7 +62,7 @@ export default function Lista() {
         </button>
         <button>
           <img src={barril} alt="" />
-          <p>Vinicolá</p>
+          <p>Vinicola</p>
         </button>
       </div>
 
@@ -73,8 +74,7 @@ export default function Lista() {
             <li key={vinho.id}>
               <img src={cordero_malbec} alt="" />
               <div className="box-resposta-nome">
-                <p>{vinho.nome}</p>
-                <p>750ml</p>
+                <p>{vinho.nome} 750ml</p>
                 <p>{vinho.tipo}</p>
                 <p>{vinho.uva}</p>
                 <div className="box-resposta-info">

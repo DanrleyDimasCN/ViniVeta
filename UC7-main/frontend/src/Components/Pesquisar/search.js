@@ -6,7 +6,6 @@ import infoadd from "../../image/infoadd.png";
 import { Link } from "react-router-dom";
 
 export default function Search() {
- 
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);

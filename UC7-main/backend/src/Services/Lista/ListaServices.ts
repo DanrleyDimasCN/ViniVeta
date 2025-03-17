@@ -47,6 +47,7 @@ class ListaServices {
     async consultarVinhos() {
         const resposta = await prismaClient.minha_Lista.findMany({
             select: {
+                id: true,
                 nome: true,
                 tipo: true,
                 uva: true,
