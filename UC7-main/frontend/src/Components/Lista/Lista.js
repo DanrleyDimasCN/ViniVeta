@@ -2,22 +2,20 @@ import React, { useState, useEffect } from "react";
 import api from "../../services/api";
 import search from "../../image/logo-search.png";
 import cordero_malbec from "../../image/cordero-malbec.png";
-import barril from '../../image/barril.png'  
-import uvas from '../../image/uvas.png'  
-import pais_regiao from '../../image/pais-regiao.png'  
+import barril from "../../image/barril.png";
+import uvas from "../../image/uvas.png";
+import pais_regiao from "../../image/pais-regiao.png";
+import star from "../../image/star.png";
 import infoadd_white from "../../image/infoadd_white.png";
 import { Link } from "react-router-dom";
 
 export default function Lista() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
 
   useEffect(() => {
     async function consultarLista() {
-    
       try {
         const response = await api.get("/ConsultarLista");
 
@@ -31,14 +29,9 @@ export default function Lista() {
         setError("Nenhum vinho encontrado.");
       }
     }
-     consultarLista()
-  }, [query])
-  
-   
+    consultarLista();
+  }, [query]);
 
- 
-
-  
   return (
     <div className="box-lista">
       <div className="box-lista-search">
@@ -57,23 +50,22 @@ export default function Lista() {
         </form>
       </div>
 
-      <div className="box-filter"> 
+      <div className="box-filter">
         <button>
-          <img src={uvas} alt=""/>
-           <p>Uvas</p>
+          <img src={uvas} alt="" />
+          <p>Uvas</p>
         </button>
         <button>
-          <img src={pais_regiao} alt=""/>
+          <img src={pais_regiao} alt="" />
           <p>País/Região</p>
         </button>
         <button>
-          <img src={barril} alt=""/>
+          <img src={barril} alt="" />
           <p>Vinicolá</p>
         </button>
       </div>
-        
+
       <div className="box-lista-resposta">
-        {loading && <p>Carregando...</p>}
         {error && <p>{error}</p>}
 
         <ul className="box-resposta-ul">
@@ -82,13 +74,20 @@ export default function Lista() {
               <img src={cordero_malbec} alt="" />
               <div className="box-resposta-nome">
                 <p>{vinho.nome}</p>
+                <p>750ml</p>
+                <p>{vinho.tipo}</p>
                 <p>{vinho.uva}</p>
-                 <p>750ml</p>
                 <div className="box-resposta-info">
                   <Link to={`/vinhoInformacoes/${vinho.id}`}>
                     <img src={infoadd_white} alt="informações adicionais" />
                     <p>Mais informações</p>
                   </Link>
+                  <div className="box-resposta-nota">
+                    <div className="box-nota-item">
+                      <img src={star} alt="" />
+                      <p>{vinho.nota}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </li>

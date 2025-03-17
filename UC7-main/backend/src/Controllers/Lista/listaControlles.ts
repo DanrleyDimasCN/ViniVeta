@@ -4,7 +4,7 @@ import { ListaServices } from "../../Services/Lista/ListaServices";
 
 class ListaControllers {
     async lista_vinhos(req: Request, res: Response) {
-        const { IdUsuario, nome, tipo, nota, favorito } = req.body;
+        const { IdUsuario, nome, tipo, uva, pais, regiao, descricao, nota, favorito } = req.body;
         const listaServices = new ListaServices()
 
         
@@ -12,6 +12,10 @@ class ListaControllers {
             IdUsuario,
             nome,
             tipo,
+            uva,
+            pais,
+            regiao,
+            descricao,
             nota,
             favorito
         })

@@ -4,17 +4,38 @@ interface ListaVinhos {
     IdUsuario: string;
     nome: string;
     tipo: string;
+    uva: string;
+    pais: string;
+    regiao: string;
+    descricao: string;
     nota: number;
     favorito: boolean;
 }
 
 class ListaServices {
-    async cadastro_vinhos({ IdUsuario, nome, tipo, nota, favorito }: ListaVinhos) {
-        const resposta = await prismaClient.minha_Lista.create({
+    async cadastro_vinhos({ IdUsuario, nome, tipo, uva, pais, regiao, descricao, nota, favorito }: ListaVinhos) {
+       
+        const vinhoExistente = await prismaClient.minha_Lista.findFirst({
+            where: {
+                IdUsuario,
+                nome, 
+            }
+        });
+
+        if (vinhoExistente) {
+            throw new Error("Este vinho já está na sua lista!"); 
+        }
+
+      
+        await prismaClient.minha_Lista.create({
             data: {
                 IdUsuario,
                 nome,
                 tipo,
+                uva,
+                pais,
+                regiao,
+                descricao,
                 nota,
                 favorito
             }
@@ -28,6 +49,10 @@ class ListaServices {
             select: {
                 nome: true,
                 tipo: true,
+                uva: true,
+                pais: true,
+                regiao: true,
+                descricao: true,
                 nota: true,
                 favorito: true
             }
@@ -37,4 +62,4 @@ class ListaServices {
     }
 }
 
-export { ListaServices }
+export { ListaServices };
