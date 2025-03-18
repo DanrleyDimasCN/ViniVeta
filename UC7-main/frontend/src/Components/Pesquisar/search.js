@@ -12,15 +12,10 @@ export default function Search() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (query.length < 3) {
-      setResults([]);
+     if (query.length < 3) {
+      pesquisarVinhos()
       return;
-    }
-
-    const fetchData = async () => {
-      setLoading(true);
-      setError("");
-
+    async function pesquisarVinhos() {
       try {
         const response = await api.get("/vinhos");
 
@@ -35,11 +30,9 @@ export default function Search() {
       } finally {
         setLoading(false);
       }
-    };
-
-    const timer = setTimeout(fetchData, 500);
-    return () => clearTimeout(timer);
-  }, [query]);
+    }
+    }
+}, [query]);
 
   return (
     <div className="box-search">
