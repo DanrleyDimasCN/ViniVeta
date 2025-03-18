@@ -4,7 +4,6 @@ import cordero from "../../image/cordero-malbec.png";
 import { toast } from "react-toastify";
 import { useParams, Link } from "react-router-dom";
 import api from "../../services/api";
-import axios from "axios";
 
 export default function VinhoInfo() {
   const [infoVinho, setInfoVinho] = useState(null);
@@ -18,12 +17,10 @@ export default function VinhoInfo() {
   useEffect(() => {
     async function consultarVinho() {
       try {
-        const response = await axios.get(
-          "http://localhost:3333/data/vinhos.json"
-        );
+        const response = await api.get(`/vinhos/${id}`);
 
         const vinhoEncontrado = response.data.find(
-          (vinho) => vinho.id === Number(id)
+          (vinho) => vinho.id === String(id)
         );
 
         if (vinhoEncontrado) {
@@ -50,6 +47,7 @@ export default function VinhoInfo() {
 
       await api.post(`/AdicionarVinho`, {
         IdUsuario,
+        id,
         nome: infoVinho.nome,
         tipo: infoVinho.tipo,
         uva: infoVinho.uva,
@@ -58,10 +56,12 @@ export default function VinhoInfo() {
         nota,
         favorito,
       });
-
+    
+      
       toast.success("Vinho Adicionado á sua lista", {
         toastId: "ToastId",
       });
+        console.log("id do vinho " + id);
       setModalAberto(false);
     } catch (error) {
       console.log(error);

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
-import axios from "axios";
 import search from "../../image/logo-search.png";
 import cordero_malbec from "../../image/cordero-malbec.png";
 import barril from "../../image/barril.png";
@@ -8,7 +7,7 @@ import uvas from "../../image/uvas.png";
 import pais_regiao from "../../image/pais-regiao.png";
 import star from "../../image/star.png";
 import infoadd_white from "../../image/infoadd_white.png";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Lista() {
   const [query, setQuery] = useState("");
@@ -40,6 +39,7 @@ export default function Lista() {
           <div className="box-search-pesquisa">
             <input
               type="search"
+              
               placeholder="Procurar..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}

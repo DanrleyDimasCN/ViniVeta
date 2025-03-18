@@ -22,7 +22,7 @@ export default function Search() {
       setError("");
 
       try {
-        const response = await api.get("/data/vinhos.json");
+        const response = await api.get("/vinhos");
 
         const filteredResults = response.data.filter(
           (vinho) =>

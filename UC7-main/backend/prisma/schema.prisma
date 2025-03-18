@@ -20,9 +20,9 @@ enum Genero {
 }
 
 model Admin {
-  id String @id @default(uuid())
+  id         String @id @default(uuid())
   pseudoNome String @unique
-  senha String @unique
+  senha      String @unique
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
@@ -31,14 +31,14 @@ model Admin {
 }
 
 model Usuario {
-  id String @id @default(uuid())
-  nome String @db.VarChar(100)
-  sobrenome String @db.VarChar(100)
-  descricao String? @db.VarChar(300)
-  email String @unique @db.VarChar(100)
+  id              String   @id @default(uuid())
+  nome            String   @db.VarChar(100)
+  sobrenome       String   @db.VarChar(100)
+  descricao       String?  @db.VarChar(300)
+  email           String   @unique @db.VarChar(100)
   data_nascimento DateTime
-  genero Genero @default(NAO_INFORMADO)
-  password String @db.VarChar(100)
+  genero          Genero   @default(NAO_INFORMADO)
+  password        String   @db.VarChar(100)
 
   // Relacionamento entre Usuario e lista
   lista Minha_Lista[] @relation("UsuarioLista")
@@ -48,40 +48,49 @@ model Usuario {
 
   @@map("cadastrar_usuarios")
 }
-model Minha_Lista {
-  id String @id @default(uuid())
-  nome String
-  tipo String
-  uva String @db.VarChar(50)
-  pais String @db.VarChar(100)
-  regiao String @db.VarChar(100)
-  descricao String? @db.VarChar(300)
 
-  nota Int
-  favorito Boolean?
+model Minha_Lista {
+  id        String  @id @default(uuid())
+  nome      String
+  tipo      String
+  uva       String  @db.VarChar(50)
+  pais      String  @db.VarChar(100)
+  regiao    String  @db.VarChar(100)
+  descricao String? @db.VarChar(300)
+  nota      Float
+  favorito  Boolean?
 
   // Relacionamento entre Usuario e lista
-  usuario Usuario @relation("UsuarioLista", fields: [IdUsuario], references: [id])
+  usuario   Usuario @relation("UsuarioLista", fields: [IdUsuario], references: [id])
   IdUsuario String
 
-  // Relacionamento entre Minha_lista e Vinhos
-  vinhos Vinhos[] @relation("ListaVinhos")
+  // Relacionamento entre Minha_Lista e Vinhos
+  // vinhos    Vinhos[] @relation("ListaVinhos")
 
   @@map("cadastro_minha_lista")
 }
 
 model Vinhos {
-  id Int @id @default(autoincrement())
-  nome String @db.VarChar(100)
-  tipo String @db.VarChar(50)
-  uva String @db.VarChar(50)
-  pais String @db.VarChar(100)
-  regiao String @db.VarChar(100)
-  descricao String @db.VarChar(300)
+  id                  String  @id @default(uuid())
+  nome                String  @db.VarChar(100)
+  tipo                String  @db.VarChar(50)
+  uva                 String  @db.VarChar(50)
+  pais                String  @db.VarChar(100)
+  regiao              String  @db.VarChar(100)
+  descricao           String  @db.VarChar(300)
+  nota_media          Float
+  historia            String
+  produtor            String  @db.VarChar(100)
+  teor_alcoolico      String  @db.VarChar(50)
+  amadurecimento      String
+  harmonizacao        String
+  olfativo            String
+  gustativo           String
+  temperatura_servico String
 
- // Relacionamento entre Lista e vinhos
-  lista Minha_Lista? @relation("ListaVinhos", fields: [IdLista], references: [id])
-  IdLista String
+  // // Relacionamento entre Lista e Vinhos
+  // lista               Minha_Lista @relation("ListaVinhos", fields: [IdLista], references: [id])
+  // IdLista             String
 
-   @@map("cadastro_vinhos")
+  @@map("cadastro_vinhos")
 }
