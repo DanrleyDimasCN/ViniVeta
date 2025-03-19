@@ -6,6 +6,7 @@ import PaginaInicial from "../Pages/Pagina-Inicial/PaginaInicial"
 import Pesquisa from "../Pages/Pagina-pesquisa/Pesquisar"
 import PageVinhoInfo from "../Pages/Vinho/PageVinhoInfo"
 import MinhaLista from "../Pages/Minha-Lista/MinhaLista"
+import VinhoInfoLista from "../Pages/VinhoInfoLista/VinhoInfoLista"
 
 
 export default function Autenticado() {
@@ -17,6 +18,7 @@ export default function Autenticado() {
                 <Route path="/EditarUsuarios/:id" element={<Editar/>} /> 
                 <Route path="/pesquisar" element={<Pesquisa/>} />
                 <Route path="/vinhoInformacoes/:id" element={<PageVinhoInfo/>} />
+                <Route path="/vinhoListaInformacoes/:id" element={<VinhoInfoLista/>} />
                 <Route path="/minhaLista" element={<MinhaLista/>} />
 
                 <Route path="*" element={<PaginaInicial/>} />

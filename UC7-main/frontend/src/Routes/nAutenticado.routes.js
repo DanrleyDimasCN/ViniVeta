@@ -8,6 +8,7 @@ import Editar from "../Components/Editar/EditarUsuarios";
 import Pesquisar from "../Pages/Pagina-pesquisa/Pesquisar";
 import PageVinhoInfo from "../Pages/Vinho/PageVinhoInfo";
 import MinhaLista from "../Pages/Minha-Lista/MinhaLista"
+import VinhoInfoLista from "../Pages/VinhoInfoLista/VinhoInfoLista";
 
 export default function NAutenticado() {
   return (
@@ -21,6 +22,7 @@ export default function NAutenticado() {
                 <Route path="/pesquisar" element={<Pesquisar/>} />
                 <Route path="/vinhoInformacoes/:id" element={<PageVinhoInfo/>} />
                 <Route path="/minhaLista" element={<MinhaLista/>} />
+                <Route path="/vinhoListaInformacoes/:id" element={<VinhoInfoLista/>} />
 
         <Route path="*" element={<Inicio />} />
       </Routes>

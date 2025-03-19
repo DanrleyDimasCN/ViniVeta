@@ -10,33 +10,45 @@ export default function Search() {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-  useEffect(() => {
-     if (query.length < 3) {
-      pesquisarVinhos()
+ 
+  const pesquisarVinhos = async () => {
+    if (query.length < 3) {
+      setResults([]); 
       return;
-    async function pesquisarVinhos() {
-      try {
-        const response = await api.get("/vinhos");
+    }
 
-        const filteredResults = response.data.filter(
-          (vinho) =>
-            vinho.nome.toLowerCase().includes(query.toLowerCase()) ||
-            vinho.uva.toLowerCase().includes(query.toLowerCase())
-        );
-        setResults(filteredResults);
-      } catch (error) {
-        setError("Nenhum vinho encontrado.");
-      } finally {
-        setLoading(false);
-      }
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await api.get("/vinhos");
+
+      const filteredResults = response.data.filter(
+        (vinho) =>
+          vinho.nome.toLowerCase().includes(query.toLowerCase()) ||
+          vinho.uva.toLowerCase().includes(query.toLowerCase())
+      );
+
+      setResults(filteredResults);
+    } catch (error) {
+      setError("Nenhum vinho encontrado.");
+    } finally {
+      setLoading(false);
     }
-    }
-}, [query]);
+  };
+  
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      pesquisarVinhos();
+    }, 500); 
+
+    return () => clearTimeout(delayDebounceFn);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
 
   return (
     <div className="box-search">
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <div className="box-search-box-btn">
           <input
             type="search"

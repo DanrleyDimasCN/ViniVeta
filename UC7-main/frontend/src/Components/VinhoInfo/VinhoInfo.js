@@ -17,23 +17,22 @@ export default function VinhoInfo() {
   useEffect(() => {
     async function consultarVinho() {
       try {
+        console.log("Consultando vinho com id:", id);
         const response = await api.get(`/vinhos/${id}`);
-
-        const vinhoEncontrado = response.data.find(
-          (vinho) => vinho.id === String(id)
-        );
-
-        if (vinhoEncontrado) {
-          setInfoVinho(vinhoEncontrado);
+        console.log("Resposta do back-end", response.data);
+        if (response.data) {
+          setInfoVinho(response.data);
         } else {
           console.error("Vinho não encontrado");
         }
       } catch (error) {
-        console.error("Erro ao buscar informações do vinho:", error);
+        console.error("Erro ao buscar informações do vinho:", error.response || error);
       }
     }
 
     if (id) {
+      console.log("Id no front" + id);
+
       consultarVinho();
     }
   }, [id]);
@@ -53,20 +52,18 @@ export default function VinhoInfo() {
         uva: infoVinho.uva,
         pais: infoVinho.pais,
         regiao: infoVinho.regiao,
+        descricao: infoVinho.descricao,
         nota,
         favorito,
       });
-    
-      
-      toast.success("Vinho Adicionado á sua lista", {
+
+      toast.success("Vinho Adicionado à sua lista", {
         toastId: "ToastId",
       });
-        console.log("id do vinho " + id);
       setModalAberto(false);
     } catch (error) {
-      console.log(error);
-
-      toast.error("Erro ao adicionar o vinho á sua lista", {
+      console.error(error);
+      toast.error("Erro ao adicionar o vinho à sua lista", {
         toastId: "ToastId",
       });
     }
@@ -88,7 +85,7 @@ export default function VinhoInfo() {
       </div>
       <div className="box-vinhoInfo-button">
         <button onClick={() => setModalAberto(true)}>
-          Adicionar á minha Lista
+          Adicionar à minha Lista
         </button>
       </div>
       <div className="box-vinho-informacao-completa">
@@ -127,7 +124,7 @@ export default function VinhoInfo() {
             <label>
               <p>FAVORITO: </p>
               <input
-                type="Checkbox"
+                type="checkbox"
                 checked={favorito}
                 onChange={(e) => setFavorito(e.target.checked)}
               />

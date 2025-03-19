@@ -18,6 +18,10 @@ export default function Lista() {
     async function consultarLista() {
       try {
         const response = await api.get("/ConsultarLista");
+        console.log("Resposta da API:", response); //mostra tudo
+        console.log("Dados da API:", response.data); //mostra o Array com os objetos
+        // console.log("Dados do vinho:", vinho); //mostra cada vinho individualmente
+        
 
         const filteredResults = response.data.filter(
           (vinho) =>
@@ -78,7 +82,7 @@ export default function Lista() {
                 <p>{vinho.tipo}</p>
                 <p>{vinho.uva}</p>
                 <div className="box-resposta-info">
-                  <Link to={`/vinhoInformacoes/${vinho.id}`}>
+                  <Link to={`/vinhoListaInformacoes/${vinho.id}`}>
                     <img src={infoadd_white} alt="informações adicionais" />
                     <p>Mais informações</p>
                   </Link>
