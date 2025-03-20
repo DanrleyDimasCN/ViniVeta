@@ -15,12 +15,12 @@ export default function NAutenticado() {
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/Perfil" element={<Perfil/>}/>
-                <Route path="/paginaInical" element={<PaginaInicial/>}/>
-                <Route path="/EditarUsuarios/:id" element={<Editar/>} />
-                <Route path="/pesquisar" element={<Pesquisar/>} />
-                <Route path="/vinhoInformacoes/:id" element={<PageVinhoInfo/>} />
-                <Route path="/minhaLista" element={<MinhaLista/>} />
+        <Route path="/Perfil" element={<Perfil />} />
+        <Route path="/paginaInical" element={<PaginaInicial />} />
+        <Route path="/EditarUsuarios/:id" element={<Editar />} />
+        <Route path="/pesquisar" element={<Pesquisar />} />
+        <Route path="/vinhoInformacoes/:id" element={<PageVinhoInfo />} />
+        <Route path="/minhaLista" element={<MinhaLista />} />
 
         <Route path="*" element={<Inicio />} />
       </Routes>

@@ -41,7 +41,8 @@ model Usuario {
   password        String   @db.VarChar(100)
 
   // Relacionamento entre Usuario e lista
-  lista Minha_Lista[] @relation("UsuarioLista")
+  lista   Minha_Lista @relation("UsuarioLista", fields: [IdLista], references: [id])
+  IdLista String      @unique
 
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
@@ -50,42 +51,42 @@ model Usuario {
 }
 
 model Minha_Lista {
-  id        String  @id @default(uuid())
+  id        String   @id @default(uuid())
   nome      String
   tipo      String
-  uva       String          @db.VarChar(50)
-  pais      String          @db.VarChar(100)
-  regiao    String          @db.VarChar(100)
-  descricao String?         @db.VarChar(300)
-  nota      Float
+  uva       String   @db.VarChar(50)
+  pais      String   @db.VarChar(100)
+  regiao    String   @db.VarChar(100)
+  descricao String?  @db.VarChar(300)
+  nota      Int
   favorito  Boolean?
-  usuario   Usuario         @relation("UsuarioLista", fields: [IdUsuario], references: [id])
-  IdUsuario String
-  vinhos    Lista_Vinhos[]
+
+  usuario   Usuario? @relation("UsuarioLista")
+  vinhos    Vinhos[] @relation("ListaVinhos")
+
   @@map("cadastro_minha_lista")
 }
 
 model Vinhos {
-  id                String          @id @default(uuid())
-  nome              String          @db.VarChar(100)
-  tipo              String          @db.VarChar(50)
-  uva               String          @db.VarChar(50)
-  pais              String          @db.VarChar(100)
-  regiao            String          @db.VarChar(100)
-  descricao         String?         @db.VarChar(300)
-  nota_media        Float
-  historia          String
-  produtor          String          @db.VarChar(100)
-  teor_alcoolico    String          @db.VarChar(50)
-  amadurecimento    String
-  harmonizacao      String
-  olfativo          String
-  gustativo         String
+  id                  String  @id @default(uuid())
+  nome                String  @db.VarChar(100)
+  tipo                String  @db.VarChar(50)
+  uva                 String  @db.VarChar(50)
+  pais                String  @db.VarChar(100)
+  regiao              String  @db.VarChar(100)
+  descricao           String? @db.VarChar(300)
+  nota_media          Int
+  historia            String
+  produtor            String  @db.VarChar(100)
+  teor_alcoolico      String  @db.VarChar(50)
+  amadurecimento      String
+  harmonizacao        String
+  olfativo            String
+  gustativo           String
   temperatura_servico String
 
   // // Relacionamento entre Lista e Vinhos
-  // lista               Minha_Lista @relation("ListaVinhos", fields: [IdLista], references: [id])
-  // IdLista             String
+  lista   Minha_Lista[] @relation("ListaVinhos")
 
   @@map("cadastro_vinhos")
 }

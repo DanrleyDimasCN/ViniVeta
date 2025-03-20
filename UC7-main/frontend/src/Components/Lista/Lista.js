@@ -18,17 +18,9 @@ export default function Lista() {
     async function consultarLista() {
       try {
         const response = await api.get("/ConsultarLista");
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        console.log("Resposta da API:", response); //mostra tudo
-        console.log("Dados da API:", response.data); //mostra o Array com os objetos
-=======
->>>>>>> parent of d8231ef4 (19/03)
-=======
->>>>>>> parent of d8231ef4 (19/03)
-=======
->>>>>>> parent of d8231ef4 (19/03)
+
+        console.log("Resposta da API:", response); 
+        console.log("Dados da API:", response.data); 
 
         const filteredResults = response.data.filter(
           (vinho) =>

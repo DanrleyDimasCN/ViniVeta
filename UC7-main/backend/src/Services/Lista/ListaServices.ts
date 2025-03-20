@@ -17,7 +17,6 @@ class ListaServices {
         try {
             const vinhoExistente = await prismaClient.minha_Lista.findFirst({
                 where: {
-                    IdUsuario,
                     nome,
                 }
             });
@@ -28,7 +27,6 @@ class ListaServices {
 
             await prismaClient.minha_Lista.create({
                 data: {
-                    IdUsuario,
                     nome,
                     tipo,
                     uva,

@@ -5,7 +5,7 @@ import Autenticado from "./autenticado.routes";
 
 export default function Rotas() {
     const { autenticado } = useContext(AutenticadoContexto)
-    
+
     return (
         autenticado === true ? <Autenticado /> : <NAutenticado />
     )

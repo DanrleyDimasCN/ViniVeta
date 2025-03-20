@@ -10,7 +10,7 @@ function App() {
   return (
     <AuthProvider>
       <div>
-        <Rotas/>
+        <Rotas />
         <ToastContainer autoClose={5000} />
       </div>
     </AuthProvider>

@@ -8,6 +8,7 @@ interface CadUsuarios {
     data_nascimento: string;
     genero: "MASCULINO" | "FEMININO" | "NAO_INFORMADO";
     password: string;
+    IdLista: string
 }
 
 interface AlterarUsuarios {
@@ -17,7 +18,7 @@ interface AlterarUsuarios {
 }
 
 class UsuariosServices {
-    async cadastrar_usuarios({ nome, sobrenome, email, data_nascimento, genero, password }: CadUsuarios) {
+    async cadastrar_usuarios({ nome, sobrenome, email, data_nascimento, genero, password, IdLista }: CadUsuarios) {
 
 
         const senhaCriptografada = await hash(password, 8);
@@ -42,6 +43,7 @@ class UsuariosServices {
                 data_nascimento: dataNascimento.toISOString(),
                 genero: genero,
                 password: senhaCriptografada,
+                IdLista: IdLista,
             }
         });
 
@@ -75,7 +77,8 @@ class UsuariosServices {
                 data_nascimento: true,
                 genero: true,
                 create_at: true,
-                password: true
+                password: true,
+                IdLista: true
                
             }
         });

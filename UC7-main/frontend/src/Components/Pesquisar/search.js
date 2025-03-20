@@ -10,98 +10,46 @@ export default function Search() {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
- 
-  const pesquisarVinhos = async () => {
-    if (query.length < 3) {
-      setResults([]); 
-      return;
-    }
-=======
->>>>>>> parent of d8231ef4 (19/03)
-=======
->>>>>>> parent of d8231ef4 (19/03)
-=======
->>>>>>> parent of d8231ef4 (19/03)
 
   useEffect(() => {
-     if (query.length < 3) {
-      pesquisarVinhos()
-      return;
-    async function pesquisarVinhos() {
-      try {
-        const response = await api.get("/vinhos");
+    const pesquisarVinhos = async () => {
+      if (query.length < 3) {
+        setResults([]);
+        setError("");
+        return;
+      }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    return () => clearTimeout(delayDebounceFn);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-=======
-
-  useEffect(() => {
-    if (query.length < 3) {
-      setResults([]);
-      return;
-    }
-
-    const fetchData = async () => {
       setLoading(true);
       setError("");
 
       try {
         const response = await api.get("/vinhos");
-
-=======
->>>>>>> parent of d8231ef4 (19/03)
-=======
->>>>>>> parent of d8231ef4 (19/03)
-=======
->>>>>>> parent of d8231ef4 (19/03)
         const filteredResults = response.data.filter(
           (vinho) =>
             vinho.nome.toLowerCase().includes(query.toLowerCase()) ||
             vinho.uva.toLowerCase().includes(query.toLowerCase())
         );
-        setResults(filteredResults);
-      } catch (error) {
-        setError("Nenhum vinho encontrado.");
+
+        if (filteredResults.length === 0) {
+          setError("Nenhum vinho encontrado.");
+        } else {
+          setResults(filteredResults);
+        }
+
+      } catch (err) {
+        setError("Erro ao buscar vinhos.");
+        setResults([]);
       } finally {
         setLoading(false);
       }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     };
 
-    const timer = setTimeout(fetchData, 500);
-    return () => clearTimeout(timer);
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 1c50ac04 (18/03)
-=======
->>>>>>> parent of 1c50ac04 (18/03)
-=======
->>>>>>> parent of 1c50ac04 (18/03)
+    const delayDebounceFn = setTimeout(() => {
+      pesquisarVinhos();
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
   }, [query]);
-=======
-    }
-    }
-}, [query]);
->>>>>>> parent of d8231ef4 (19/03)
-=======
-    }
-    }
-}, [query]);
->>>>>>> parent of d8231ef4 (19/03)
-=======
-    }
-    }
-}, [query]);
->>>>>>> parent of d8231ef4 (19/03)
 
   return (
     <div className="box-search">
