@@ -19,12 +19,10 @@ export default function VinhoInfo() {
       try {
         const response = await api.get(`/vinho/${id}`);
 
-        const vinhoEncontrado = response.data.find(
-          (vinho) => vinho.id === String(id)
-        );
-
-        if (vinhoEncontrado) {
-          setInfoVinho(vinhoEncontrado);
+     
+        
+        if (response) {  
+          setInfoVinho(response);
         } else {
           console.error("Vinho não encontrado");
         }

@@ -58,9 +58,10 @@ async consultarVinhoPorId(req: Request, res: Response) {
     try {
     const { id } = req.params;
     const vinho = await vinhosServices.consultarVinhoPorId(id);
-    
+    console.log("Vinho BAck-end" + vinho);
     if (vinho) {
     return res.json(vinho);
+    
     } else {
     return res.status(404).json({ message: "Vinho não encontrado" });
     }

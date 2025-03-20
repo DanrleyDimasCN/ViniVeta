@@ -120,13 +120,15 @@ class VinhosServices {
   async consultarVinhoPorId(id: string) {
     try {
     const vinho = await prismaClient.vinhos.findUnique({
-    where: { id },
+    where: 
+    { 
+      id
+     },
     });
     
     if (!vinho) {
     throw new Error("Vinho não encontrado");
     }
-    
     return vinho;
     } catch (error) {
     console.error("Erro ao consultar vinho por ID:", error);
