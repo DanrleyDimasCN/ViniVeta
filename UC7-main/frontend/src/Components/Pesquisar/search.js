@@ -13,12 +13,15 @@ export default function Search() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  
   const pesquisarVinhos = async () => {
     if (query.length < 3) {
       setResults([]); 
       return;
     }
+=======
+>>>>>>> parent of d8231ef4 (19/03)
 =======
 >>>>>>> parent of d8231ef4 (19/03)
 =======
@@ -32,6 +35,7 @@ export default function Search() {
       try {
         const response = await api.get("/vinhos");
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     return () => clearTimeout(delayDebounceFn);
@@ -55,6 +59,8 @@ export default function Search() {
 >>>>>>> parent of d8231ef4 (19/03)
 =======
 >>>>>>> parent of d8231ef4 (19/03)
+=======
+>>>>>>> parent of d8231ef4 (19/03)
         const filteredResults = response.data.filter(
           (vinho) =>
             vinho.nome.toLowerCase().includes(query.toLowerCase()) ||
@@ -66,6 +72,7 @@ export default function Search() {
       } finally {
         setLoading(false);
       }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     };
@@ -80,6 +87,11 @@ export default function Search() {
 =======
 >>>>>>> parent of 1c50ac04 (18/03)
   }, [query]);
+=======
+    }
+    }
+}, [query]);
+>>>>>>> parent of d8231ef4 (19/03)
 =======
     }
     }
