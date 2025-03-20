@@ -75,6 +75,9 @@ export default function Search() {
 
     const timer = setTimeout(fetchData, 500);
     return () => clearTimeout(timer);
+<<<<<<< HEAD
+>>>>>>> parent of 1c50ac04 (18/03)
+=======
 >>>>>>> parent of 1c50ac04 (18/03)
   }, [query]);
 
