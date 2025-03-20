@@ -10,6 +10,7 @@ export default function Search() {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+<<<<<<< HEAD
  
   const pesquisarVinhos = async () => {
     if (query.length < 3) {
@@ -44,6 +45,37 @@ export default function Search() {
 
     return () => clearTimeout(delayDebounceFn);
   // eslint-disable-next-line react-hooks/exhaustive-deps
+=======
+
+  useEffect(() => {
+    if (query.length < 3) {
+      setResults([]);
+      return;
+    }
+
+    const fetchData = async () => {
+      setLoading(true);
+      setError("");
+
+      try {
+        const response = await api.get("/vinhos");
+
+        const filteredResults = response.data.filter(
+          (vinho) =>
+            vinho.nome.toLowerCase().includes(query.toLowerCase()) ||
+            vinho.uva.toLowerCase().includes(query.toLowerCase())
+        );
+        setResults(filteredResults);
+      } catch (error) {
+        setError("Nenhum vinho encontrado.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const timer = setTimeout(fetchData, 500);
+    return () => clearTimeout(timer);
+>>>>>>> parent of 1c50ac04 (18/03)
   }, [query]);
 
   return (
