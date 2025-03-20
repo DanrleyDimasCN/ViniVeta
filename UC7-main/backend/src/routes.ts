@@ -28,6 +28,7 @@ router.get('/VerificaToken', estaAutenticado, new LoginUsuariosControllers().ver
 // // Rota - Registrar Vinhos
 router.post('/CadastrarVinhos', estaAutenticado, new VinhosControllers().registrar_vinhos)
 router.get('/vinhos', estaAutenticado, new VinhosControllers().consultarVinhos)
+router.get('/vinho/:id', estaAutenticado, new VinhosControllers().consultarVinhoPorId)
 router.post("/importarVinhos", estaAutenticado, new VinhosControllers().importarVinhos);
 
 

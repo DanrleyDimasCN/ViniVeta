@@ -4,12 +4,11 @@ import { ListaServices } from "../../Services/Lista/ListaServices";
 
 class ListaControllers {
     async lista_vinhos(req: Request, res: Response) {
-        const { IdUsuario, nome, tipo, uva, pais, regiao, descricao, nota, favorito } = req.body;
+        const { nome, tipo, uva, pais, regiao, descricao, nota, favorito, usuarioId } = req.body;
         const listaServices = new ListaServices()
 
         
         const resposta = await listaServices.cadastro_vinhos({
-            IdUsuario,
             nome,
             tipo,
             uva,
@@ -17,7 +16,8 @@ class ListaControllers {
             regiao,
             descricao,
             nota,
-            favorito
+            favorito,
+            usuarioId
         })
         return res.json(resposta)
     }

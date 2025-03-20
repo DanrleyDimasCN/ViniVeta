@@ -18,12 +18,11 @@ export default function Lista() {
     async function consultarLista() {
       try {
         const response = await api.get("/ConsultarLista");
-<<<<<<< HEAD
+
 
         console.log("Resposta da API:", response); 
         console.log("Dados da API:", response.data); 
-=======
->>>>>>> parent of d8231ef4 (19/03)
+
 
         const filteredResults = response.data.filter(
           (vinho) =>

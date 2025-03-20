@@ -17,7 +17,7 @@ export default function VinhoInfo() {
   useEffect(() => {
     async function consultarVinho() {
       try {
-        const response = await api.get(`/vinhos/${id}`);
+        const response = await api.get(`/vinho/${id}`);
 
         const vinhoEncontrado = response.data.find(
           (vinho) => vinho.id === String(id)
@@ -53,11 +53,8 @@ export default function VinhoInfo() {
         uva: infoVinho.uva,
         pais: infoVinho.pais,
         regiao: infoVinho.regiao,
-<<<<<<< HEAD
         descricao: infoVinho.descricao,
         nota_media: infoVinho.nota_media,
-=======
->>>>>>> parent of d8231ef4 (19/03)
         nota,
         favorito,
       });

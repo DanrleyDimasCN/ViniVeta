@@ -116,6 +116,23 @@ class VinhosServices {
       throw new Error("Erro ao importar vinhos");
     }
   }
+
+  async consultarVinhoPorId(id: string) {
+    try {
+    const vinho = await prismaClient.vinhos.findUnique({
+    where: { id },
+    });
+    
+    if (!vinho) {
+    throw new Error("Vinho não encontrado");
+    }
+    
+    return vinho;
+    } catch (error) {
+    console.error("Erro ao consultar vinho por ID:", error);
+    throw new Error("Erro ao consultar vinho por ID");
+    }
+    }
 }
 
 export { VinhosServices };
