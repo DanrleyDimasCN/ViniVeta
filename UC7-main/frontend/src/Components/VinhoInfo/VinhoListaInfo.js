@@ -10,32 +10,29 @@ export default function VinhoListaInfo() {
   const [modalAberto, setModalAberto] = useState(false);
   const [nota, setNota] = useState(0);
   const [favorito, setFavorito] = useState(false);
-  const { IdUsuario } = useContext(AutenticadoContexto);
+  const { IdUsuario, listaId } = useContext(AutenticadoContexto);
 
   const { id } = useParams();
 
-  useEffect(() => {
-    async function consultarVinho() {
-      try {
-        console.log("Consultando vinho com id:", id);
-        const response = await api.get(`/vinhos/${id}`);
-        console.log("Resposta do back-end", response.data);
-        if (response.data) {
-          setInfoVinho(response.data);
-        } else {
-          console.error("Vinho não encontrado");
-        }
-      } catch (error) {
-        console.error("Erro ao buscar informações do vinho:", error.response || error);
+useEffect(() => {
+  async function consultarVinho() {
+    try {
+      const response = await api.get(`/listaVinhosComDadosCompletos/${listaId}/${id}`); // Substitua listaId pelo ID da lista do usuário
+      if (response.data) {
+        setInfoVinho(response.data);
+      } else {
+        console.error("Vinho não encontrado");
       }
+    } catch (error) {
+      console.error("Erro ao buscar informações do vinho:", error.response || error);
     }
+  }
 
-    if (id) {
-      console.log("Id no front" + id);
-
-      consultarVinho();
-    }
-  }, [id]);
+  if (id && listaId) {
+    consultarVinho();
+  }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [id, listaId]);
 
   async function deleteVinho() {
     try {

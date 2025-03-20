@@ -6,6 +6,7 @@ import { VinhosControllers } from './Controllers/Vinhos/vinhosControllers';
 import { AdminControllers } from './Controllers/Administrador/AdminControllers';
 import { estaAutenticado } from './middleware/estaAutenticado';
 import { LoginUsuariosControllers } from './Controllers/Login/LoginUsuariosControllers';
+import { ListaVinhosControllers } from './Controllers/Lista_Vinhos/ListaVinhosControllers';
 
 const router = Router();
 
@@ -27,7 +28,7 @@ router.get('/VerificaToken', estaAutenticado, new LoginUsuariosControllers().ver
 
 // // Rota - Registrar Vinhos
 router.post('/CadastrarVinhos', estaAutenticado, new VinhosControllers().registrar_vinhos)
-router.get('/vinhos/:id', estaAutenticado, new VinhosControllers().consultarVinhos)
+router.get('/vinhos', estaAutenticado, new VinhosControllers().consultarVinhos)
 router.post("/importarVinhos", estaAutenticado, new VinhosControllers().importarVinhos);
 
 
@@ -35,6 +36,6 @@ router.post("/importarVinhos", estaAutenticado, new VinhosControllers().importar
 router.get('/vinhos/:id', estaAutenticado, new VinhosControllers().consultarVinhoPorId);
 router.post('/AdicionarVinho', estaAutenticado, new ListaControllers().lista_vinhos)
 router.get('/ConsultarLista', estaAutenticado, new ListaControllers().consultarVinhos)
-
+router.get('/listaVinhosComDadosCompletos/:listaId/:vinhoId', estaAutenticado, new ListaVinhosControllers().buscarVinhoListaPorIdComDadosCompletos);
 
 export default router;

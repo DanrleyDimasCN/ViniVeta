@@ -57,6 +57,24 @@ class ListaVinhosServices {
             throw new Error("Erro ao listar vinhos da lista");
         }
     }
+
+    async buscarVinhoListaPorIdComDadosCompletos(listaId: string, vinhoId: string) {
+        try {
+            const vinhoLista = await prismaClient.lista_Vinhos.findFirst({
+                where: {
+                    listaId: listaId,
+                    vinhoId: vinhoId,
+                },
+                include: {
+                    vinho: true, // Inclui os dados completos do vinho
+                },
+            });
+            return vinhoLista;
+        } catch (error) {
+            console.error("Erro ao buscar vinho da lista por ID com dados completos:", error);
+            throw error;
+        }
+    }
 }
 
 export { ListaVinhosServices };

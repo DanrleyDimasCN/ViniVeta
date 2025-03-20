@@ -20,8 +20,6 @@ export default function Lista() {
         const response = await api.get("/ConsultarLista");
         console.log("Resposta da API:", response); //mostra tudo
         console.log("Dados da API:", response.data); //mostra o Array com os objetos
-        // console.log("Dados do vinho:", vinho); //mostra cada vinho individualmente
-        
 
         const filteredResults = response.data.filter(
           (vinho) =>

@@ -9,9 +9,9 @@ class ListaVinhosControllers {
             const { listaId, vinhoId } = req.body;
             const listaVinho = await listaVinhosServices.adicionarVinhoLista({ listaId, vinhoId });
             return res.json(listaVinho);
-        } catch (error) {
+        } catch (error: any) {
             console.error("Erro ao adicionar vinho à lista:", error);
-            return res.status(500).json({ message: "Erro ao adicionar vinho à lista" });
+            return res.status(500).json({ message: `Erro ao adicionar vinho à lista: ${error.message}` });
         }
     }
 
@@ -34,6 +34,18 @@ class ListaVinhosControllers {
         } catch (error) {
             console.error("Erro ao listar vinhos da lista:", error);
             return res.status(500).json({ message: "Erro ao listar vinhos da lista" });
+        }
+    }
+
+
+    async buscarVinhoListaPorIdComDadosCompletos(req: Request, res: Response) {
+        try {
+            const { listaId, vinhoId } = req.params;
+            const vinhoLista = await listaVinhosServices.buscarVinhoListaPorIdComDadosCompletos(listaId, vinhoId);
+            return res.json(vinhoLista);
+        } catch (error) {
+            console.error("Erro ao buscar vinho da lista por ID com dados completos:", error);
+            return res.status(500).json({ message: "Erro ao buscar vinho da lista por ID com dados completos" });
         }
     }
 }
