@@ -53,50 +53,19 @@ model Minha_Lista {
   id        String  @id @default(uuid())
   nome      String
   tipo      String
-<<<<<<< HEAD
-<<<<<<< HEAD
   uva       String          @db.VarChar(50)
   pais      String          @db.VarChar(100)
   regiao    String          @db.VarChar(100)
   descricao String?         @db.VarChar(300)
-  nota      Int
+  nota      Float
   favorito  Boolean?
   usuario   Usuario         @relation("UsuarioLista", fields: [IdUsuario], references: [id])
-  IdUsuario String @unique
-  vinhos    Lista_Vinhos[]
-=======
-  uva       String  @db.VarChar(50)
-  pais      String  @db.VarChar(100)
-  regiao    String  @db.VarChar(100)
-  descricao String? @db.VarChar(300)
-  nota      Float
-  favorito  Boolean?
-=======
-  uva       String  @db.VarChar(50)
-  pais      String  @db.VarChar(100)
-  regiao    String  @db.VarChar(100)
-  descricao String? @db.VarChar(300)
-  nota      Float
-  favorito  Boolean?
->>>>>>> parent of d8231ef4 (19/03)
-
-  // Relacionamento entre Usuario e lista
-  usuario   Usuario @relation("UsuarioLista", fields: [IdUsuario], references: [id])
   IdUsuario String
-
-  // Relacionamento entre Minha_Lista e Vinhos
-  // vinhos    Vinhos[] @relation("ListaVinhos")
-
-<<<<<<< HEAD
->>>>>>> parent of d8231ef4 (19/03)
-=======
->>>>>>> parent of d8231ef4 (19/03)
+  vinhos    Lista_Vinhos[]
   @@map("cadastro_minha_lista")
 }
 
 model Vinhos {
-<<<<<<< HEAD
-<<<<<<< HEAD
   id                String          @id @default(uuid())
   nome              String          @db.VarChar(100)
   tipo              String          @db.VarChar(50)
@@ -104,7 +73,7 @@ model Vinhos {
   pais              String          @db.VarChar(100)
   regiao            String          @db.VarChar(100)
   descricao         String?         @db.VarChar(300)
-  nota_media        Int
+  nota_media        Float
   historia          String
   produtor          String          @db.VarChar(100)
   teor_alcoolico    String          @db.VarChar(50)
@@ -112,28 +81,6 @@ model Vinhos {
   harmonizacao      String
   olfativo          String
   gustativo         String
-=======
-=======
->>>>>>> parent of d8231ef4 (19/03)
-  id                  String  @id @default(uuid())
-  nome                String  @db.VarChar(100)
-  tipo                String  @db.VarChar(50)
-  uva                 String  @db.VarChar(50)
-  pais                String  @db.VarChar(100)
-  regiao              String  @db.VarChar(100)
-  descricao           String  @db.VarChar(300)
-  nota_media          Float
-  historia            String
-  produtor            String  @db.VarChar(100)
-  teor_alcoolico      String  @db.VarChar(50)
-  amadurecimento      String
-  harmonizacao        String
-  olfativo            String
-  gustativo           String
-<<<<<<< HEAD
->>>>>>> parent of d8231ef4 (19/03)
-=======
->>>>>>> parent of d8231ef4 (19/03)
   temperatura_servico String
 
   // // Relacionamento entre Lista e Vinhos
