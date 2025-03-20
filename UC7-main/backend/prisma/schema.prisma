@@ -51,6 +51,7 @@ model Usuario {
 }
 
 model Minha_Lista {
+<<<<<<< HEAD
   id        String   @id @default(uuid())
   nome      String
   tipo      String
@@ -63,6 +64,24 @@ model Minha_Lista {
 
   usuario   Usuario? @relation("UsuarioLista")
   vinhos    Vinhos[] @relation("ListaVinhos")
+=======
+  id        String  @id @default(uuid())
+  nome      String
+  tipo      String
+  uva       String  @db.VarChar(50)
+  pais      String  @db.VarChar(100)
+  regiao    String  @db.VarChar(100)
+  descricao String? @db.VarChar(300)
+  nota      Float
+  favorito  Boolean?
+
+  // Relacionamento entre Usuario e lista
+  usuario   Usuario @relation("UsuarioLista", fields: [IdUsuario], references: [id])
+  IdUsuario String
+
+  // Relacionamento entre Minha_Lista e Vinhos
+  // vinhos    Vinhos[] @relation("ListaVinhos")
+>>>>>>> parent of d8231ef4 (19/03)
 
   @@map("cadastro_minha_lista")
 }
@@ -74,8 +93,13 @@ model Vinhos {
   uva                 String  @db.VarChar(50)
   pais                String  @db.VarChar(100)
   regiao              String  @db.VarChar(100)
+<<<<<<< HEAD
   descricao           String? @db.VarChar(300)
   nota_media          Int
+=======
+  descricao           String  @db.VarChar(300)
+  nota_media          Float
+>>>>>>> parent of d8231ef4 (19/03)
   historia            String
   produtor            String  @db.VarChar(100)
   teor_alcoolico      String  @db.VarChar(50)
@@ -86,7 +110,12 @@ model Vinhos {
   temperatura_servico String
 
   // // Relacionamento entre Lista e Vinhos
+<<<<<<< HEAD
   lista   Minha_Lista[] @relation("ListaVinhos")
+=======
+  // lista               Minha_Lista @relation("ListaVinhos", fields: [IdLista], references: [id])
+  // IdLista             String
+>>>>>>> parent of d8231ef4 (19/03)
 
   @@map("cadastro_vinhos")
 }

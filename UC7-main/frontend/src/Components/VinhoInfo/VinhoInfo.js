@@ -53,8 +53,11 @@ export default function VinhoInfo() {
         uva: infoVinho.uva,
         pais: infoVinho.pais,
         regiao: infoVinho.regiao,
+<<<<<<< HEAD
         descricao: infoVinho.descricao,
         nota_media: infoVinho.nota_media,
+=======
+>>>>>>> parent of d8231ef4 (19/03)
         nota,
         favorito,
       });

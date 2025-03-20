@@ -12,12 +12,21 @@ export default function Autenticado() {
     return (
         <BrowserRouter>
             <Routes>
+<<<<<<< HEAD
                 <Route path="/pagina-Inicial" element={<PaginaInicial />} />
                 <Route path="/Perfil" element={<Perfil />} />
                 <Route path="/EditarUsuarios/:id" element={<Editar />} />
                 <Route path="/pesquisar" element={<Pesquisa />} />
                 <Route path="/vinhoInformacoes/:id" element={<PageVinhoInfo />} />
                 <Route path="/minhaLista" element={<MinhaLista />} />
+=======
+                <Route path="/pagina-Inicial" element={<PaginaInicial/>}/>
+                <Route path="/Perfil" element={<Perfil/>}/>
+                <Route path="/EditarUsuarios/:id" element={<Editar/>} /> 
+                <Route path="/pesquisar" element={<Pesquisa/>} />
+                <Route path="/vinhoInformacoes/:id" element={<PageVinhoInfo/>} />
+                <Route path="/minhaLista" element={<MinhaLista/>} />
+>>>>>>> parent of d8231ef4 (19/03)
 
                 <Route path="*" element={<PaginaInicial />} />
             </Routes>

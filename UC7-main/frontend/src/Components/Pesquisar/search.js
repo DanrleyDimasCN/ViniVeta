@@ -12,6 +12,7 @@ export default function Search() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+<<<<<<< HEAD
     const pesquisarVinhos = async () => {
       if (query.length < 3) {
         setResults([]);
@@ -50,6 +51,29 @@ export default function Search() {
 
     return () => clearTimeout(delayDebounceFn);
   }, [query]);
+=======
+     if (query.length < 3) {
+      pesquisarVinhos()
+      return;
+    async function pesquisarVinhos() {
+      try {
+        const response = await api.get("/vinhos");
+
+        const filteredResults = response.data.filter(
+          (vinho) =>
+            vinho.nome.toLowerCase().includes(query.toLowerCase()) ||
+            vinho.uva.toLowerCase().includes(query.toLowerCase())
+        );
+        setResults(filteredResults);
+      } catch (error) {
+        setError("Nenhum vinho encontrado.");
+      } finally {
+        setLoading(false);
+      }
+    }
+    }
+}, [query]);
+>>>>>>> parent of d8231ef4 (19/03)
 
   return (
     <div className="box-search">
