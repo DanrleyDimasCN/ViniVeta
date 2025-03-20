@@ -33,7 +33,6 @@ router.post("/importarVinhos", estaAutenticado, new VinhosControllers().importar
 
 
 // Rota - Adicionar e consultar Vinhos
-router.get('/vinhos/:id', estaAutenticado, new VinhosControllers().consultarVinhoPorId);
 router.post('/AdicionarVinho', estaAutenticado, new ListaControllers().lista_vinhos)
 router.get('/ConsultarLista', estaAutenticado, new ListaControllers().consultarVinhos)
 router.get('/listaVinhosComDadosCompletos/:listaId/:vinhoId', estaAutenticado, new ListaVinhosControllers().buscarVinhoListaPorIdComDadosCompletos);

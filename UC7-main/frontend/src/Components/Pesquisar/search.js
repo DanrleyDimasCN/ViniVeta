@@ -11,38 +11,25 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 <<<<<<< HEAD
+<<<<<<< HEAD
  
   const pesquisarVinhos = async () => {
     if (query.length < 3) {
       setResults([]); 
       return;
     }
+=======
+>>>>>>> parent of d8231ef4 (19/03)
 
-    setLoading(true);
-    setError("");
-
-    try {
-      const response = await api.get("/vinhos");
-
-      const filteredResults = response.data.filter(
-        (vinho) =>
-          vinho.nome.toLowerCase().includes(query.toLowerCase()) ||
-          vinho.uva.toLowerCase().includes(query.toLowerCase())
-      );
-
-      setResults(filteredResults);
-    } catch (error) {
-      setError("Nenhum vinho encontrado.");
-    } finally {
-      setLoading(false);
-    }
-  };
-  
   useEffect(() => {
-    const delayDebounceFn = setTimeout(() => {
-      pesquisarVinhos();
-    }, 500); 
+     if (query.length < 3) {
+      pesquisarVinhos()
+      return;
+    async function pesquisarVinhos() {
+      try {
+        const response = await api.get("/vinhos");
 
+<<<<<<< HEAD
     return () => clearTimeout(delayDebounceFn);
   // eslint-disable-next-line react-hooks/exhaustive-deps
 =======
@@ -60,6 +47,8 @@ export default function Search() {
       try {
         const response = await api.get("/vinhos");
 
+=======
+>>>>>>> parent of d8231ef4 (19/03)
         const filteredResults = response.data.filter(
           (vinho) =>
             vinho.nome.toLowerCase().includes(query.toLowerCase()) ||
@@ -71,6 +60,7 @@ export default function Search() {
       } finally {
         setLoading(false);
       }
+<<<<<<< HEAD
     };
 
     const timer = setTimeout(fetchData, 500);
@@ -83,10 +73,15 @@ export default function Search() {
 =======
 >>>>>>> parent of 1c50ac04 (18/03)
   }, [query]);
+=======
+    }
+    }
+}, [query]);
+>>>>>>> parent of d8231ef4 (19/03)
 
   return (
     <div className="box-search">
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form>
         <div className="box-search-box-btn">
           <input
             type="search"

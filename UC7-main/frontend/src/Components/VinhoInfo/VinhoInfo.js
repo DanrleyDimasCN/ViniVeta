@@ -17,22 +17,23 @@ export default function VinhoInfo() {
   useEffect(() => {
     async function consultarVinho() {
       try {
-        console.log("Consultando vinho com id:", id);
         const response = await api.get(`/vinhos/${id}`);
-        console.log("Resposta do back-end", response.data);
-        if (response.data) {
-          setInfoVinho(response.data);
+
+        const vinhoEncontrado = response.data.find(
+          (vinho) => vinho.id === String(id)
+        );
+
+        if (vinhoEncontrado) {
+          setInfoVinho(vinhoEncontrado);
         } else {
           console.error("Vinho não encontrado");
         }
       } catch (error) {
-        console.error("Erro ao buscar informações do vinho:", error.response || error);
+        console.error("Erro ao buscar informações do vinho:", error);
       }
     }
 
     if (id) {
-      console.log("Id no front" + id);
-
       consultarVinho();
     }
   }, [id]);
@@ -52,19 +53,25 @@ export default function VinhoInfo() {
         uva: infoVinho.uva,
         pais: infoVinho.pais,
         regiao: infoVinho.regiao,
+<<<<<<< HEAD
         descricao: infoVinho.descricao,
         nota_media: infoVinho.nota_media,
+=======
+>>>>>>> parent of d8231ef4 (19/03)
         nota,
         favorito,
       });
-
-      toast.success("Vinho Adicionado à sua lista", {
+    
+      
+      toast.success("Vinho Adicionado á sua lista", {
         toastId: "ToastId",
       });
+        console.log("id do vinho " + id);
       setModalAberto(false);
     } catch (error) {
-      console.error(error);
-      toast.error("Erro ao adicionar o vinho à sua lista", {
+      console.log(error);
+
+      toast.error("Erro ao adicionar o vinho á sua lista", {
         toastId: "ToastId",
       });
     }
@@ -86,7 +93,7 @@ export default function VinhoInfo() {
       </div>
       <div className="box-vinhoInfo-button">
         <button onClick={() => setModalAberto(true)}>
-          Adicionar à minha Lista
+          Adicionar á minha Lista
         </button>
       </div>
       <div className="box-vinho-informacao-completa">
@@ -125,7 +132,7 @@ export default function VinhoInfo() {
             <label>
               <p>FAVORITO: </p>
               <input
-                type="checkbox"
+                type="Checkbox"
                 checked={favorito}
                 onChange={(e) => setFavorito(e.target.checked)}
               />
