@@ -8,7 +8,7 @@ export default function AuthProvider({ children }) {
 
     const [tokenT, setTokenT] = useState(false)
     const [token, setToken] = useState('')
-    const [IdUsuario, setIdUsuario] = useState(null)
+    const [usuarioId, setUsuarioId] = useState(null)
     const [listaId, setListaId] = useState(null);
 
     const autenticado = !!tokenT
@@ -33,7 +33,7 @@ export default function AuthProvider({ children }) {
                     setListaId(JSON.parse(listaIdLocal));
                 }
                 setTokenT(true)
-                setIdUsuario(resposta.data.id)
+                setUsuarioId(resposta.data.id)
                 localStorage.setItem('@id', JSON.stringify(resposta.data.id))
                 localStorage.setItem('@nome', JSON.stringify(resposta.data.nome))
             }
@@ -58,7 +58,7 @@ export default function AuthProvider({ children }) {
             localStorage.setItem('@nome', JSON.stringify(resposta.data.nome))
             localStorage.setItem('@listaId', JSON.stringify(resposta.data.listaId));
             setTokenT(true)
-            setIdUsuario(resposta.data.id)
+            setUsuarioId(resposta.data.id)
             setListaId(resposta.data.listaId);
         } catch (err) {
             toast.error('Erro de Comunicação')
@@ -66,7 +66,7 @@ export default function AuthProvider({ children }) {
     }
 
     return (
-        <AutenticadoContexto.Provider value={{ autenticado, loginEntrada, verificarToken, token, IdUsuario, listaId, setListaIdContext }}>
+        <AutenticadoContexto.Provider value={{ autenticado, loginEntrada, verificarToken, token, usuarioId, listaId, setListaIdContext }}>
             {children}
         </AutenticadoContexto.Provider>
     )

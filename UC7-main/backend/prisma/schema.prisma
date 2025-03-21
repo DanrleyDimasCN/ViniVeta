@@ -5,81 +5,80 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgres"
-  url      = env("DATABASE_URL")
+    provider = "postgres"
+    url      = env("DATABASE_URL")
 }
 
 enum Genero {
-  MASCULINO
-  FEMININO
-  NAO_INFORMADO
+    MASCULINO
+    FEMININO
+    NAO_INFORMADO
 }
 
 model Admin {
-  id         String    @id @default(uuid())
-  pseudoNome String    @unique
-  senha      String    @unique
-  create_at  DateTime? @default(now())
-  update_at  DateTime? @default(now())
+    id         String    @id @default(uuid())
+    pseudoNome String    @unique
+    senha      String    @unique
+    create_at  DateTime? @default(now())
+    update_at  DateTime? @default(now())
 
-  @@map("cadastro_admin")
+    @@map("cadastro_admin")
 }
 
 model Usuario {
-  id              String      @id @default(uuid())
-  nome            String      @db.VarChar(100)
-  sobrenome       String      @db.VarChar(100)
-  descricao       String?     @db.VarChar(300)
-  email           String      @unique @db.VarChar(100)
-  data_nascimento DateTime
-  genero          Genero      @default(NAO_INFORMADO)
-  password        String      @db.VarChar(100)
-  lista           Minha_Lista? @relation("UsuarioLista")
-  create_at       DateTime?   @default(now())
-  update_at       DateTime?   @default(now())
+    id              String        @id @default(uuid())
+    nome            String        @db.VarChar(100)
+    sobrenome       String        @db.VarChar(100)
+    descricao       String?       @db.VarChar(300)
+    email           String        @unique @db.VarChar(100)
+    data_nascimento DateTime
+    genero          Genero        @default(NAO_INFORMADO)
+    password        String        @db.VarChar(100)
+    lista           Minha_Lista?  @relation("UsuarioLista")
+    create_at       DateTime?     @default(now())
+    update_at       DateTime?     @default(now())
 
-  @@map("cadastrar_usuarios")
+    @@map("cadastrar_usuarios")
 }
 
 model Minha_Lista {
-  id        String   @id @default(uuid())
-  nome      String
-  tipo      String
-  uva       String   @db.VarChar(50)
-  pais      String   @db.VarChar(100)
-  regiao    String   @db.VarChar(100)
-  descricao String?  @db.VarChar(300)
-  nota      Float
-  favorito  Boolean?
-  usuario   Usuario  @relation("UsuarioLista", fields: [usuarioId], references: [id])
-  usuarioId String   @unique
-  vinhos    Vinhos[] @relation("ListaVinhos")
-
-  @@map("cadastro_minha_lista")
+    id        String      @id @default(uuid())
+    nome      String
+    usuario   Usuario     @relation("UsuarioLista", fields: [usuarioId], references: [id])
+    usuarioId String @unique
+    vinhos    ListaVinhos[]
+    @@map("cadastro_minha_lista")
 }
 
 model Vinhos {
-  id                  String      @id @default(uuid())
-  nome                String      @db.VarChar(100)
-  tipo                String      @db.VarChar(50)
-  uva                 String      @db.VarChar(50)
-  pais                String      @db.VarChar(100)
-  regiao              String      @db.VarChar(100)
-  descricao           String?     @db.VarChar(300)
-  nota_media          Float
-  historia            String
-  produtor            String      @db.VarChar(100)
-  teor_alcoolico      String      @db.VarChar(50)
-  amadurecimento      String
-  harmonizacao        String
-  olfativo            String
-  gustativo           String
-  temperatura_servico String
-  lista               Minha_Lista[] @relation("ListaVinhos")
+    id                  String        @id @default(uuid())
+    nome                String        @db.VarChar(100)
+    tipo                String        @db.VarChar(50)
+    uva                 String        @db.VarChar(50)
+    pais                String        @db.VarChar(100)
+    regiao              String        @db.VarChar(100)
+    descricao           String?       @db.VarChar(300)
+    nota_media          Float
+    historia            String
+    produtor            String        @db.VarChar(100)
+    teor_alcoolico      String        @db.VarChar(50)
+    amadurecimento      String
+    harmonizacao        String
+    olfativo            String
+    gustativo           String
+    temperatura_servico String
+    listas              ListaVinhos[]
+    @@map("cadastro_vinhos")
+}
 
-  @@map("cadastro_vinhos")
+model ListaVinhos {
+    listaId   String
+    vinhoId   String
+    lista     Minha_Lista @relation(fields: [listaId], references: [id])
+    vinho     Vinhos      @relation(fields: [vinhoId], references: [id])
+    @@id([listaId, vinhoId])
 }

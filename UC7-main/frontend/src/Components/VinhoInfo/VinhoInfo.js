@@ -10,7 +10,7 @@ export default function VinhoInfo() {
   const [modalAberto, setModalAberto] = useState(false);
   const [nota, setNota] = useState(0);
   const [favorito, setFavorito] = useState(false);
-  const { IdUsuario } = useContext(AutenticadoContexto);
+  const { usuarioId } = useContext(AutenticadoContexto);
 
   const { id } = useParams();
 
@@ -18,11 +18,9 @@ export default function VinhoInfo() {
     async function consultarVinho() {
       try {
         const response = await api.get(`/vinho/${id}`);
-
-     
         
         if (response) {  
-          setInfoVinho(response);
+          setInfoVinho(response.data);
         } else {
           console.error("Vinho não encontrado");
         }
@@ -38,14 +36,13 @@ export default function VinhoInfo() {
 
   async function addVinho() {
     try {
-      if (!IdUsuario) {
+      if (!usuarioId) {
         toast.error("Usuário não Autenticado");
         return;
       }
 
       await api.post(`/AdicionarVinho`, {
-        IdUsuario,
-        id,
+        usuarioId,
         nome: infoVinho.nome,
         tipo: infoVinho.tipo,
         uva: infoVinho.uva,
