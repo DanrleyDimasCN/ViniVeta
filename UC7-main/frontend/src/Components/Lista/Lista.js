@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 export default function Lista() {
     const [query, setQuery] = useState("");
-    const [listas, setListas] = useState([]); // Agora armazena um array de listas
+    const [listas, setListas] = useState([]);
     const [error, setError] = useState("");
     const { usuarioId } = useContext(AutenticadoContexto);
 
@@ -20,7 +20,7 @@ export default function Lista() {
         async function consultarLista() {
             try {
                 const response = await api.get(`/ConsultarLista/${usuarioId}`);
-                setListas(response.data); // Armazena o array de listas
+                setListas(response.data);
             } catch (error) {
                 setError("Nenhum vinho encontrado.");
             }
