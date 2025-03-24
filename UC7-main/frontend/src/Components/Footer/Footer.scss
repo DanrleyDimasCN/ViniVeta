@@ -1,0 +1,38 @@
+* {
+  body {
+    .box-footer {
+      margin-top: 0.8rem;
+      height: 6rem;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.2rem;
+      a {
+        text-decoration: none;
+        user-select: none;
+        outline: none;
+        box-shadow: none;
+        background: transparent;
+        color: inherit;
+        color: #fff;
+        background-color: var(--cor-secundaria);
+        height: 6rem;
+        width: 6.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        font-weight: bold;
+        font-size: 1rem;
+
+        img {
+            height: 2rem;
+            width: 2rem;
+            color: #fff;
+        }
+      }
+    }
+  }
+}

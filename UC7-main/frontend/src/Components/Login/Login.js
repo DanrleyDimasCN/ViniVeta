@@ -23,17 +23,17 @@ export default function Login() {
             console.log("Email:", email, "Senha", password);
             await loginEntrada(email, password);
         } catch (err) {
-           console.log(err);
-           
+            console.log(err);
+
         }
     }
 
     const handleInputChange = (e) => {
-        setPassword(e.target.value); 
+        setPassword(e.target.value);
     };
 
     const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword); 
+        setShowPassword(!showPassword);
     };
 
     return (
@@ -44,21 +44,25 @@ export default function Login() {
                         <img src={bottle} alt="" />
                         <img src={glass} alt="" />
                     </div>
+
                     <input
                         type="text"
                         placeholder='Digite o E-mail'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <input
-                        type={showPassword ? 'text' : 'password'}
-                        value={password}
-                        onChange={handleInputChange}
-                        placeholder='Digite a Senha'
-                    />
-                    <span onClick={togglePasswordVisibility}>
-                        <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-                    </span>
+                    <div className="box-senha">
+
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            value={password}
+                            onChange={handleInputChange}
+                            placeholder='Digite a Senha'
+                        />
+                        <span onClick={togglePasswordVisibility}>
+                            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                        </span>
+                    </div>
                     <div className="box-button-entrar">
                         <button>Entrar</button>
                     </div>

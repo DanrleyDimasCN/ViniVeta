@@ -86,6 +86,9 @@
 
       .box-lista-resposta {
         .box-resposta-ul {
+          height: 61.6vh;
+          overflow-y: auto;
+          scrollbar-width: none;
           display: flex;
           flex-direction: column;
           gap: 2rem;

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { AutenticadoContexto } from "../../Contexts/authContexts";
 import cordero from "../../image/cordero-malbec.png";
 import { toast } from "react-toastify";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import api from "../../services/api";
 
 export default function VinhoInfo() {
@@ -134,9 +134,6 @@ export default function VinhoInfo() {
           </div>
         </div>
       )}
-      <Link to="/pesquisar">
-        <p>Voltar</p>
-      </Link>
     </div>
   );
 }

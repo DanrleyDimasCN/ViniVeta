@@ -21,7 +21,6 @@
                 gap: var(--espacamento-maior);
 
     .box-dados-login {
-        height: 50vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -46,6 +45,35 @@
             background-color: #fff;
             border-radius: var(--borda-arredondamento);
             padding: var(--box-menor);
+          }
+
+          input[type="text"] {
+                max-width: 59.5vw;
+          }
+
+          .box-senha {
+            max-width: 50vw;
+            position: relative;
+            display: inline-block;
+          }
+          
+          .box-senha {
+            max-width: 65vw;
+            position: relative;
+            display: inline-block;
+          }
+          
+          .box-senha input {
+            max-width: 60vw;
+          }
+          
+          .box-senha span {
+            position: absolute;
+            top: 50%;
+            right: 0.625rem; /* 10px / 16px = 0.625rem */
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 1;
           }
 
           .box-button-entrar {
@@ -85,7 +113,6 @@
         width: 80vw;
         height: var(--box-media);
         border-radius: var(--borda-arredondamento);
-    
     }
 }
 }

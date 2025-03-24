@@ -66,7 +66,6 @@ export default function UsuariosInfo() {
                 </ul>
             </div>
             <div className="box-perfil-button-voltar-editar">
-                <button><Link to='/pagina-Inicial'><p>Voltar</p></Link></button>
                 <button><Link to={`/EditarUsuarios/${dadosUsuarios.id}`}><p>Editar</p></Link></button>
             </div>
         </div>
