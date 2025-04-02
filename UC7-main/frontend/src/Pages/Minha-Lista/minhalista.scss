@@ -1,5 +1,111 @@
 * {
   body {
+    
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-editar {
+  background-color: var(--cor-principal);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-editar h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.modal-editar label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.modal-editar input[type="text"],
+.modal-editar input[type="number"],
+.modal-editar select {
+  width: calc(100% - 12px);
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:first-child {
+  background-color: #ccc;
+  color: #333;
+}
+
+.modal-buttons button:first-child:hover {
+  background-color: #bbb;
+}
+
+.modal-buttons button:nth-child(2) {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.modal-buttons button:nth-child(2):hover {
+  background-color: #0056b3;
+}
+
+.modal-buttons .button-apagar {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.modal-buttons .button-apagar:hover {
+  background-color: #c82333;
+}
+
+@media (max-width: 400px) {
+  .modal-editar {
+      padding: 15px;
+  }
+
+  .modal-buttons {
+      flex-direction: column-reverse;
+  }
+
+  .modal-buttons button {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+}
     .box-lista {
       .box-lista-search {
         .box-search-pesquisa {
@@ -52,7 +158,6 @@
 
       .box-filter {
         display: flex;
-        width: 100vw;
         justify-content: center;
         gap: 1px;
         button {
@@ -65,16 +170,16 @@
           background: none;
 
           background-color: var(--cor-secundaria);
-          height: 7rem;
-          width: 6.6rem;
+          height: 4rem;
+          width: 33.33rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           gap: 0.5rem;
           img {
-            height: 4rem;
-            width: 4rem;
+            height: 2rem;
+            width: 2rem;
           }
 
           p {
@@ -85,14 +190,16 @@
       }
 
       .box-lista-resposta {
+        display: flex;
+        flex-direction: column;
         .box-resposta-ul {
-          height: 61.6vh;
+          min-height: 74vh;
           overflow-y: auto;
           scrollbar-width: none;
           display: flex;
           flex-direction: column;
           gap: 2rem;
-          margin-top: 2rem;
+          margin-top: 0.5rem;
           margin-left: 0.5rem;
           li {
             height: 7rem;
@@ -101,12 +208,24 @@
 
             img {
               height: 7rem;
-              width: 6rem;
+              width: 5rem;
               border-radius: 1rem;
+            }
+
+            .box-resposta-editar {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+               button {
+                all: unset;
+                color: #fff;
+                font-style: italic;
+                cursor: pointer;
+               }
+
             }
           }
           .box-resposta-nome {
-            width: 90vw;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -122,7 +241,7 @@
             }
 
             :nth-child(2) {
-              display: contents;
+              max-width: 2rem;
             }
 
             .box-resposta-nota {
@@ -157,7 +276,7 @@
               display: flex;
               align-items: end;
               justify-content: flex-start;
-              gap: 3rem;
+              gap: 10vw;
               a {
                 all: unset;
                 display: flex;
@@ -169,7 +288,8 @@
                 outline: none;
                 box-shadow: none;
                 background: transparent;
-                color: inherit;
+                color: #fff;
+                cursor: pointer;
 
                 img {
                   border-radius: 0;

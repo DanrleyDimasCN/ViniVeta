@@ -56,7 +56,7 @@ export default function Search() {
         <div className="box-search-box-btn">
           <input
             type="search"
-            placeholder="Pesquisar..."
+            placeholder="Pesquisar (nome, uva...)"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -66,7 +66,7 @@ export default function Search() {
         </div>
       </form>
 
-      <div className="box-search-resposta">
+      {query && <div className="box-search-resposta">
         {loading && <p>Carregando...</p>}
         {error && <p>{error}</p>}
 
@@ -76,7 +76,6 @@ export default function Search() {
               <img src={cordero_malbec} alt="" />
               <div className="box-vinho">
                 <p>{vinho.nome}</p>
-                <p>750ml</p>
                 <p>{vinho.uva}</p>
                 <div className="box-vinho-info-add">
                   <Link to={`/vinhoInformacoes/${vinho.id}`}>
@@ -88,7 +87,7 @@ export default function Search() {
             </li>
           ))}
         </ul>
-      </div>
+      </div>}
     </div>
   );
 }

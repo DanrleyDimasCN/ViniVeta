@@ -155,7 +155,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   * .box-screen-1024 {
     display: flex;
   }
@@ -173,7 +173,7 @@
     height: 50vh;
     width: 40vw;
     border-bottom: 1px solid #fff;
-    font-size: 4rem;
+    font-size: 3rem;
     gap: 2rem;
     text-align: center;
 
@@ -193,7 +193,7 @@
     height: 40vh;
     width: 40vw;
     border: none;
-    font-size: 4rem;
+    font-size: 3rem;
     border-bottom: 1px solid #fff;
     gap: 1rem;
 
@@ -206,7 +206,7 @@
     height: 40vh;
     width: 40vw;
     border: none;
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   * .box-imagem-pagina-inicial img {
@@ -215,6 +215,6 @@
   }
 
   .box-pagina-inicial .box-pesquisar-minhaLista .box-pesquisar a img {
-    height: 4rem;
+    height: 3rem;
   }
 }

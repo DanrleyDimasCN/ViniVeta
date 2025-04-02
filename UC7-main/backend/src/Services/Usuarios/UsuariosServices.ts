@@ -14,6 +14,7 @@ interface AlterarUsuarios {
     id: string;
     nome: string;
     email: string;
+    password: string;
 }
 
 class UsuariosServices {
@@ -93,18 +94,23 @@ class UsuariosServices {
         return { ...resposta, idade };
     }
 
-    async alterarDadosUsuarios({ id, nome, email }: AlterarUsuarios) {
-         await prismaClient.usuario.update({
+    async alterarDadosUsuarios({ id, nome, email, password }: AlterarUsuarios) {
+        let senhaCriptografada = password;
+        if (password) { 
+            senhaCriptografada = await hash(password, 8);
+        }
+        await prismaClient.usuario.update({
             where: {
                 id: id,
             },
             data: {
                 nome: nome,
-                email: email
+                email: email,
+                password: senhaCriptografada
             }
         });
-
-        return ({dados: 'Cadastro Alterado Com Sucesso'})
+    
+        return ({dados: 'Cadastro Alterado Com Sucesso'});
     }
 
     async apagarUsuarios(id: string) {

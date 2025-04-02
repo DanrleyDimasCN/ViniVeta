@@ -13,8 +13,8 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 50vh;
                 width: 70vw;
+                padding: var(--espacamento-pequeno);
                 border-radius: var(--borda-arredondamento);
 
                 p {

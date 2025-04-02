@@ -1,0 +1,78 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garante que o modal fique acima de outros elementos */
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+  
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+  
+      h3 {
+        margin: 0;
+        font-size: 1.5em;
+        color: #333;
+      }
+  
+      button {
+        background: none;
+        border: none;
+        font-size: 1em;
+        color: #777;
+        cursor: pointer;
+        padding: 5px;
+  
+        &:hover {
+          color: #333;
+        }
+      }
+    }
+  
+    .modal-options {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  
+      li {
+        padding: 10px 15px;
+        border-bottom: 1px solid #f0f0f0;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+  
+        &:last-child {
+          border-bottom: none;
+        }
+  
+        &:hover {
+          background-color: #f9f9f9;
+          color: #007bff; /* Cor de destaque ao passar o mouse */
+        }
+      }
+    }
+  
+    .modal-empty {
+      color: #999;
+      padding: 15px;
+      text-align: center;
+    }
+  }

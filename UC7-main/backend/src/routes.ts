@@ -16,10 +16,9 @@ router.get('/ConsultarAdmin', new AdminControllers().consultarAdmin)
 
 // Rota - Cadastrar Usuarios
 router.post('/CadastrarUsuarios',  new UsuariosControllers().cadastro_usuarios)
-router.post('/ConsultarUsuariosUnico', estaAutenticado, new UsuariosControllers().consultarUsuariosUnico)
-// router.get('/ConsultarUsuariosUnico', estaAutenticado, new UsuariosControllers().consultarUsuariosUnico)
-router.get('/ConsultarUsuarios', new UsuariosControllers().consultarUsuarios)
-router.put('/AlterarDadosUsuarios', estaAutenticado, new UsuariosControllers().alterarDadosUsuarios)
+router.get('/ConsultarUsuariosUnico/:id', estaAutenticado, new UsuariosControllers().consultarUsuariosUnico)
+router.get('/ConsultarUsuarios', estaAutenticado, new UsuariosControllers().consultarUsuarios)
+router.put('/AlterarDadosUsuarios/:id', estaAutenticado, new UsuariosControllers().alterarDadosUsuarios)
 router.delete('/ApagarUsuarios/:id', estaAutenticado, new UsuariosControllers().apagarUsuarios)
 
 // Rota - Login Usuarios
@@ -41,6 +40,6 @@ router.get('/ConsultarLista/:usuarioId', estaAutenticado, new ListaControllers()
 router.post('/ListaVinhos', estaAutenticado, new ListaVinhosControllers().cadastrarListaVinhos)
 router.get('/ListaVinhos/lista/:listaId', estaAutenticado, new ListaVinhosControllers().consultarListaVinhosByLista)
 router.get('/ListaVinhos/vinho/:vinhoId', estaAutenticado, new ListaVinhosControllers().consultarListaVinhosByVinho)
-router.delete('/ListaVinhos', estaAutenticado, new ListaVinhosControllers().deleteListaVinhos)
-
+router.delete('/ListaVinhos/:listaId/:vinhoId', estaAutenticado, new ListaVinhosControllers().deleteListaVinhos);
+router.put('/ListaVinhos/:listaId/:vinhoId', estaAutenticado, new ListaVinhosControllers().editarListaVinhos);
 export default router;

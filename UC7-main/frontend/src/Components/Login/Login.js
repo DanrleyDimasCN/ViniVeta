@@ -45,18 +45,19 @@ export default function Login() {
                         <img src={glass} alt="" />
                     </div>
 
-                    <input
-                        type="text"
-                        placeholder='Digite o E-mail'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <div className="box-senha">
-
+                    <div className="box-input-login">
+                        <input
+                            type="text"
+                            placeholder='Digite o E-mail'
+                            value={email}
+                            className="input-email"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                         <input
                             type={showPassword ? 'text' : 'password'}
                             value={password}
                             onChange={handleInputChange}
+                            className="input-senha"
                             placeholder='Digite a Senha'
                         />
                         <span onClick={togglePasswordVisibility}>

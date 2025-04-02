@@ -1,185 +1,142 @@
 * {
+  .box-inicio-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
 
-    .box-background {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--cor-principal);
+    .box-principal-login {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--cor-secundaria);
+      width: 90vw;
+      height: 90vh;
+      border-radius: var(--borda-arredondamento);
 
-        
-            .box-principal-login { 
-                height: 90vh;
-                width: 90vw;
-                background-color: var(--cor-secundaria);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                border-radius: var(--borda-arredondamento);
-                gap: var(--espacamento-maior);
-
-    .box-dados-login {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      .box-dados-login {
+        display: grid;
+        justify-items: center;
         gap: var(--espacamento-pequeno);
-        
+        padding: var(--espacamento-menor);
 
         .box-image {
-            img {
-                margin: 0 var(--espacamento-pequeno);
-            }
+          display: flex;
+          align-items: flex-end;
+          gap: var(--espacamento-pequeno);
+
+          :nth-child(1) {
+            height: 5rem;
+          }
+
+          :nth-child(2) {
+            height: 3rem;
+          }
         }
 
-        input {
-            all: unset;
-            border: none;
-            outline: none;
-            padding: 0;
-            margin: 0;
+        input[type="text"],
+        input[type="password"] {
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          padding: 0;
+          margin: 0;
+          box-shadow: none;
+          font-family: inherit;
+          font-size: inherit;
+          color: inherit;
+          box-sizing: border-box;
 
-            font-weight: var(--font-peso);
-            background-color: #fff;
-            border-radius: var(--borda-arredondamento);
-            padding: var(--box-menor);
-          }
+          background-color: #fff;
+        }
 
-          input[type="text"] {
-                max-width: 59.5vw;
-          }
+        ::-webkit-input-placeholder {
+          color: inherit;
+          opacity: 0.5;
+        }
 
-          .box-senha {
-            max-width: 50vw;
-            position: relative;
-            display: inline-block;
-          }
-          
-          .box-senha {
-            max-width: 65vw;
-            position: relative;
-            display: inline-block;
-          }
-          
-          .box-senha input {
-            max-width: 60vw;
-          }
-          
-          .box-senha span {
-            position: absolute;
-            top: 50%;
-            right: 0.625rem; /* 10px / 16px = 0.625rem */
-            transform: translateY(-50%);
-            cursor: pointer;
-            z-index: 1;
-          }
+        ::-moz-placeholder {
+          color: inherit;
+          opacity: 0.5;
+        }
 
-          .box-button-entrar {
-            button {
-                all: unset;
-                background: none;
-                border: none;
-                padding: 0;
-                font: inherit;
-                color: inherit;
-                cursor: pointer;
-                
-                background-color: var(--cor-button);
-                color: #fff;
-                font-size: var(--font-principal);
-                font-weight: var(--font-peso);
-                padding: var(--button-tamanho);
-                border-radius: var(--borda-arredondamento);
-              }
-          }
+        :-ms-input-placeholder {
+          color: inherit;
+          opacity: 0.5;
+        }
 
-          .box-recuperar-senha {
-            color: #fff;
-            font-size: var(--font-secundaria);
-            font-weight: var(--font-peso);
-          }
-    }
+        ::placeholder {
+          color: inherit;
+          opacity: 0.5;
+        }
+      }
 
-    .box-novo-cadastro {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: var(--font-secundaria);
-        font-weight: var(--font-peso);
-        background-color: var(--cor-complementar);
-        color: var(--cor-button);
-        width: 80vw;
-        height: var(--box-media);
-        border-radius: var(--borda-arredondamento);
-    }
-}
-}
+      .box-input-login {
+        height: 3rem;
+        display: grid;
+        justify-items: end;
+        row-gap: 0.5rem;
 
-}
+        :nth-child(1) {
+          grid-row: 1;
+          grid-column: 2;
+          border-radius: var(--borda-arredondamento);
+          text-indent: var(--espacamento-pequeno);
+        }
 
-@media (min-width:600px) {
+        :nth-child(2) {
+          grid-row: 2;
+          grid-column: 2;
+          border-radius: var(--borda-arredondamento);
+          text-indent: var(--espacamento-pequeno);
+        }
 
-    .box-background .box-principal-login {
-        height: 90vh;
-    }
+        :nth-child(3) {
+          grid-row: 2;
+          grid-column: 2;
+          align-self: center;
+        }
+      }
 
-    .box-background .box-principal-login .box-dados-login {
-        height: 70vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: var(--espacamento-pequeno);
-    }
+      .box-button-entrar {
+        button {
+          all: unset;
+          background-color: var(--cor-button);
+          color: #fff;
+          padding: var(--espacamento-pequeno) var(--espacamento-menor);
+          border-radius: var(--borda-arredondamento);
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: var(--font-peso);
+          cursor: pointer;
+        }
+      }
 
-    .box-background .box-principal-login .box-dados-login input {
-        all: unset;
-        border: none;
-        outline: none;
-        padding: 0;
-        margin: 0;
-        font-size: 1.5rem;
-        font-weight: bolder;
-        background-color: #fff;
-        border-radius: var(--borda-arredondamento);
-        padding: 1.5rem;
-    }
-
-    .box-background .box-principal-login .box-novo-cadastro {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.5rem;
-        font-weight: var(--font-peso);
-        background-color: var(--cor-complementar);
-        color: var(--cor-button);
-        width: 60vw;
-        height: 5rem;
-        border-radius: var(--borda-arredondamento);
-    }
-
-    .box-background .box-principal-login .box-dados-login .box-button-entrar button {
-        all: unset;
-        background: none;
-        border: none;
-        padding: 0;
-        font: inherit;
-        color: inherit;
-        cursor: pointer;
-        background-color: var(--cor-button);
+      .box-recuperar-senha {
         color: #fff;
-        font-size: 2rem;
-        font-weight: bolder;
-        padding: 1.5rem 5rem;
-        border-radius: var(--borda-arredondamento);
-    }
+        font-size: var(--font-secundaria);
+        font-weight: var(--font-peso-menor);
+        cursor: pointer;
+      }
 
-    .box-recuperar-senha {
-        p {
-            font-size: 1.5rem;
+      .box-novo-cadastro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: var(--espacamento-menor);
+
+        P {
+          background-color: var(--cor-complementar);
+          color: var(--cor-secundaria);
+          padding: var(--espacamento-pequeno);
+          border-radius: var(--borda-arredondamento);
+          font-weight: var(--font-peso);
         }
+      }
     }
-   
+  }
 }

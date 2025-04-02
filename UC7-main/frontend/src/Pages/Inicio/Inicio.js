@@ -4,7 +4,7 @@ import './inicio.scss'
 
 export default function Inicio() {
     return (
-      <div className='box-background'>
+      <div className='box-inicio-background'>
           <Login/>
       </div>
     )

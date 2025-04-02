@@ -3,6 +3,8 @@ import prismaClient from "../../prisma";
 interface ListaVinhosRequest {
     listaId: string;
     vinhoId: string;
+    comentario?: string
+    minha_nota?: number
 }
 
 class ListaVinhosServices {
@@ -29,7 +31,7 @@ class ListaVinhosServices {
                     listaId: listaId,
                 },
                 include: {
-                    vinho: true, // Inclui os detalhes do vinho relacionado
+                    vinho: true,
                 },
             });
 
@@ -47,13 +49,39 @@ class ListaVinhosServices {
                     vinhoId: vinhoId,
                 },
                 include: {
-                    lista: true, // Inclui os detalhes da lista relacionada
+                    lista: true,
                 },
             });
 
             return listaVinhos;
         } catch (error) {
             console.error("Erro ao buscar relacionamentos ListaVinho por vinho:", error);
+            throw error;
+        }
+    }
+  
+    async editarListaVinhos({ listaId, vinhoId, comentario, minha_nota }: ListaVinhosRequest) {
+        try {
+            const dataToUpdate: any = {};
+            if (comentario !== undefined) {
+                dataToUpdate.comentario = comentario;
+            }
+            if (minha_nota !== undefined) {
+                dataToUpdate.minha_nota = minha_nota;
+            }
+
+            const editaListaVinho = await prismaClient.listaVinhos.update({
+                where: {
+                    listaId_vinhoId: {
+                        listaId: listaId,
+                        vinhoId: vinhoId,
+                    },
+                },
+                data: dataToUpdate,
+            });
+            return editaListaVinho;
+        } catch (error) {
+            console.error("Erro ao editar relacionamento ListaVinho:", error);
             throw error;
         }
     }

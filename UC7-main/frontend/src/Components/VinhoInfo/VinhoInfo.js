@@ -49,8 +49,7 @@ export default function VinhoInfo() {
         pais: infoVinho.pais,
         regiao: infoVinho.regiao,
         descricao: infoVinho.descricao,
-        nota_media: infoVinho.nota_media,
-        nota,
+        nota_media: nota,
         favorito,
       });
     

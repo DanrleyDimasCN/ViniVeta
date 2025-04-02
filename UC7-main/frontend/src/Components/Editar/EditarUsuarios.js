@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import apiLocal from "../../services/api";
+import { AutenticadoContexto } from "../../Contexts/authContexts";
 import { toast } from "react-toastify";
 
 export default function EditarUsuarios() {
@@ -9,27 +10,13 @@ export default function EditarUsuarios() {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
-    const token = localStorage.getItem('@token');
-    console.log(token);
+    const { usuarioId } = useContext(AutenticadoContexto);
 
     useEffect(() => {
         async function consultarDados() {
-            const token = localStorage.getItem("@token");
-    
-            if (!token) {
-                toast.warn("Token não encontrado. Por favor, faça login novamente.");
-                mudarTela("/login");  
-                return;
-            }
-    
             try {
                 
-                const resposta = await apiLocal.post("/ConsultarUsuariosUnico", {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+                const resposta = await apiLocal.get(`/ConsultarUsuariosUnico/${usuarioId}`)
     
                 if (resposta.data) {
                     setNome(resposta.data.nome || "");
@@ -52,7 +39,8 @@ export default function EditarUsuarios() {
             toast.warn("ID do usuário não fornecido.");
             mudarTela("/");
         }
-    }, [id, token, mudarTela]);   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id, mudarTela]);   
 
     async function enviarAlteracao(e) {
         e.preventDefault();
@@ -64,14 +52,11 @@ export default function EditarUsuarios() {
 
         try {
             console.log("Enviando dados para alteração:", {nome, email, password });
-            const resposta = await apiLocal.put(`/AlterarDadosUsuarios/${id}`, {
+            const resposta = await apiLocal.put(`/AlterarDadosUsuarios/${usuarioId}`, {
                 nome,
                 email,
                 password
-            }, {
-                headers: { Authorization: `Bearer ${token}` }
             });
-
             console.log("Resposta da API", resposta);
             toast.success('Cadastro alterado com sucesso!');
             mudarTela('/');

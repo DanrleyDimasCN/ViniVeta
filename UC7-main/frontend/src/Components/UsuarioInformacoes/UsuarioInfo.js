@@ -6,23 +6,14 @@ import { toast } from "react-toastify";
 import fotoPerfil from '../../image/foto-perfil.png';
 
 export default function UsuariosInfo() {
-    const { verificarToken } = useContext(AutenticadoContexto);
     const [dadosUsuarios, setDadosUsuarios] = useState(null);
-  
-    useEffect(() => {
-        verificarToken();
-    }, [verificarToken]);
+    const { usuarioId } = useContext(AutenticadoContexto);
+
 
     useEffect(() => {
         async function consultarDadosUsuarios() {
             try {
-                const token = JSON.parse(localStorage.getItem('@token'));
-
-                const resposta = await apiLocal.post('/ConsultarUsuariosUnico', {}, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+                const resposta = await apiLocal.get(`/ConsultarUsuariosUnico/${usuarioId}`);
 
                 setDadosUsuarios(resposta.data);
             } catch (err) {
@@ -31,8 +22,8 @@ export default function UsuariosInfo() {
         }
 
         consultarDadosUsuarios();
-    }, []);
-   
+    }, [usuarioId]);
+
     if (!dadosUsuarios) {
         return <p>Carregando...</p>;
     }
@@ -45,7 +36,7 @@ export default function UsuariosInfo() {
     });
 
     return (
-        <div className="box-perfil-background">
+        <div>
             <div className="box-perfil-principal">
                 <div className="box-perfil">
                     <div className="box-perfil-foto">
@@ -56,18 +47,19 @@ export default function UsuariosInfo() {
                         <p>{dadosUsuarios.sobrenome}</p>
                     </div>
                 </div>
-            </div>
-            <div className="box-perfil-dados">
                 <ul className="box-perfil-lista">
                     <li><p>E-mail: {dadosUsuarios.email}</p></li>
                     <li><p>Idade: {dadosUsuarios.idade || "Não informada"}</p></li>
                     <li><p>Gênero: {dadosUsuarios.genero}</p></li>
                     <li><p>Membro desde: {dataFormatada}</p></li>
                 </ul>
+
+                <div className="box-perfil-button-voltar-editar">
+                    <button><Link to={`/EditarUsuarios/${usuarioId}`}><p>Editar</p></Link></button>
+                </div>
             </div>
-            <div className="box-perfil-button-voltar-editar">
-                <button><Link to={`/EditarUsuarios/${dadosUsuarios.id}`}><p>Editar</p></Link></button>
-            </div>
+
+
         </div>
     );
 }

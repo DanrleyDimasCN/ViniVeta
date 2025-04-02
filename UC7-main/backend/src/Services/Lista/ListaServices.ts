@@ -15,31 +15,31 @@ interface ListaVinhos {
 class ListaServices {
     async cadastro_vinhos({ usuarioId, nome, tipo, uva, pais, regiao, descricao, nota, favorito }: ListaVinhos) {
         try {
-            // Verifica se o usuário já tem uma lista
+           
             let listaExistente = await prismaClient.minha_Lista.findFirst({
                 where: {
                     usuarioId: usuarioId
                 }
             });
 
-            // Se a lista não existir, crie uma nova lista vazia
+            
             if (!listaExistente) {
                 listaExistente = await prismaClient.minha_Lista.create({
                     data: {
                         usuarioId: usuarioId,
-                        nome: "Minha Lista de Vinhos", // Nome padrão para a lista
+                        nome: "Minha Lista de Vinhos", 
                     }
                 });
             }
 
-            // Verifica se o vinho existe na tabela de vinhos
+           
             let vinhoExistente = await prismaClient.vinhos.findFirst({
                 where: {
                     nome: nome,
                 }
             });
 
-            // Se o vinho não existir, cria um novo vinho
+           
             if (!vinhoExistente) {
                 vinhoExistente = await prismaClient.vinhos.create({
                     data: {
@@ -61,8 +61,7 @@ class ListaServices {
                     }
                 });
             }
-
-            // Adiciona o vinho à tabela de relacionamento
+           
             await prismaClient.listaVinhos.create({
                 data: {
                     listaId: listaExistente.id,
@@ -87,9 +86,11 @@ class ListaServices {
                 nome: true,
                 vinhos: {
                     select: {
-                        vinho: true,
-                    }
-                }
+                        comentario: true, 
+                        minha_nota: true, 
+                        vinho: true,      
+                    },
+                },
             },
         });
 

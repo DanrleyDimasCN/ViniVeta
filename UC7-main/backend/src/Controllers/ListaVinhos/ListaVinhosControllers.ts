@@ -38,10 +38,31 @@ class ListaVinhosControllers {
         }
     }
 
-    async deleteListaVinhos(req: Request, res: Response) {
-        const { listaId, vinhoId } = req.body;
+    async editarListaVinhos(req: Request, res: Response) {
+        const { listaId, vinhoId } = req.params;
+        const { comentario, minha_nota } = req.body;
         const listaVinhosServices = new ListaVinhosServices();
 
+        try {
+            const edicaoListaVinhos = await listaVinhosServices.editarListaVinhos({
+                listaId,
+                vinhoId,
+                comentario,
+                minha_nota,
+            });
+            return res.status(200).json({
+                message: "Relacionamento ListaVinho atualizado com sucesso",
+                data: edicaoListaVinhos,
+            });
+        } catch (error: any) {
+            return res.status(500).json({ error: error.message });
+        }
+    }
+
+    async deleteListaVinhos(req: Request, res: Response) {
+        const { listaId, vinhoId } = req.params;
+        const listaVinhosServices = new ListaVinhosServices();
+    
         try {
             const deletedListaVinho = await listaVinhosServices.deleteListaVinhos({ listaId, vinhoId });
             return res.status(200).json({ message: "Relacionamento ListaVinho deletado com sucesso" });

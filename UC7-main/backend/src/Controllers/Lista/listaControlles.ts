@@ -18,7 +18,7 @@ class ListaControllers {
                 nota,
                 favorito,
             });
-            return res.status(201).json({ mensagem: "Vinho adicionado à lista com sucesso" }); // Mensagem atualizada
+            return res.status(201).json({ mensagem: "Vinho adicionado à lista com sucesso" }); 
         } catch (error: any) {
             return res.status(400).json({ error: error.message });
         }
