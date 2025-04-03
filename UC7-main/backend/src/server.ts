@@ -9,6 +9,21 @@ app.use(cors())
 app.use(express.json())
 app.use(router)
 
+
+const staticFilesPath = path.resolve(__dirname, '..', 'backend', 'tmp');
+
+app.use(
+    '/files',
+    express.static(path.resolve(__dirname, '..', 'tmp'))
+)
+
+console.log("Pasta estática:", path.resolve(__dirname, '..', 'tmp'))
+
+app.use(
+    '/files',
+    express.static(staticFilesPath)
+);
+
 app.use('/data', express.static(path.join(__dirname, 'data')));
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

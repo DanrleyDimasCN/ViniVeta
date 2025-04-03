@@ -1,14 +1,17 @@
 import { Router } from 'express';
-
+import multer from 'multer'
+import uploadConfig from './config/multer'
 import { UsuariosControllers } from './Controllers/Usuarios/usuariosControllers'
 import { ListaControllers } from './Controllers/Lista/listaControlles';
 import { VinhosControllers } from './Controllers/Vinhos/vinhosControllers';
 import { AdminControllers } from './Controllers/Administrador/AdminControllers';
 import { estaAutenticado } from './middleware/estaAutenticado';
 import { LoginUsuariosControllers } from './Controllers/Login/LoginUsuariosControllers';
-import { ListaVinhosControllers } from './Controllers/ListaVinhos/ListaVinhosControllers'; // Importe o novo controller
+import { ListaVinhosControllers } from './Controllers/ListaVinhos/ListaVinhosControllers';
+
 
 const router = Router();
+const upload = multer(uploadConfig.upload('./tmp'))
 
 // Rota - Admnistrador
 router.post('/CadastrarAdmin', new AdminControllers().cadastrar_admin)
@@ -18,7 +21,7 @@ router.get('/ConsultarAdmin', new AdminControllers().consultarAdmin)
 router.post('/CadastrarUsuarios',  new UsuariosControllers().cadastro_usuarios)
 router.get('/ConsultarUsuariosUnico/:id', estaAutenticado, new UsuariosControllers().consultarUsuariosUnico)
 router.get('/ConsultarUsuarios', estaAutenticado, new UsuariosControllers().consultarUsuarios)
-router.put('/AlterarDadosUsuarios/:id', estaAutenticado, new UsuariosControllers().alterarDadosUsuarios)
+router.put('/AlterarDadosUsuarios/:id', estaAutenticado, upload.single('file'), new UsuariosControllers().alterarDadosUsuarios)
 router.delete('/ApagarUsuarios/:id', estaAutenticado, new UsuariosControllers().apagarUsuarios)
 
 // Rota - Login Usuarios

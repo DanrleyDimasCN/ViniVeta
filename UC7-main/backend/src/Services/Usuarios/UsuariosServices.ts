@@ -15,6 +15,7 @@ interface AlterarUsuarios {
     nome: string;
     email: string;
     password: string;
+    banner: string;
 }
 
 class UsuariosServices {
@@ -77,7 +78,8 @@ class UsuariosServices {
                 genero: true,
                 create_at: true,
                 password: true,
-                lista: true
+                lista: true,
+                banner: true
                
             }
         });
@@ -94,7 +96,7 @@ class UsuariosServices {
         return { ...resposta, idade };
     }
 
-    async alterarDadosUsuarios({ id, nome, email, password }: AlterarUsuarios) {
+    async alterarDadosUsuarios({ id, nome, email, password, banner }: AlterarUsuarios) {
         let senhaCriptografada = password;
         if (password) { 
             senhaCriptografada = await hash(password, 8);
@@ -106,7 +108,8 @@ class UsuariosServices {
             data: {
                 nome: nome,
                 email: email,
-                password: senhaCriptografada
+                password: senhaCriptografada,
+                banner: banner
             }
         });
     
