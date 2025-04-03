@@ -12,15 +12,12 @@ export default function Autenticado() {
     return (
         <BrowserRouter>
             <Routes>
-
                 <Route path="/pagina-Inicial" element={<PaginaInicial />} />
                 <Route path="/Perfil" element={<Perfil />} />
                 <Route path="/EditarUsuarios/:id" element={<Editar />} />
                 <Route path="/pesquisar" element={<Pesquisa />} />
                 <Route path="/vinhoInformacoes/:id" element={<PageVinhoInfo />} />
                 <Route path="/minhaLista" element={<MinhaLista />} />
-
-
                 <Route path="*" element={<PaginaInicial />} />
             </Routes>
         </BrowserRouter>
